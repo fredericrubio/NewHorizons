@@ -11,9 +11,8 @@
 *.gch
 *.pch
 
-#XCode section
-DerivedData
-Network.xcodeproj
+# XCode section
+DerivedData/
 
 # Compiled Dynamic libraries
 *.so
