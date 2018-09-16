@@ -53,7 +53,7 @@ class IMP_Message {
         IMP_MessageType type;
         lOffset = sizeof(unsigned long);
         memcpy(&type, pMessage + lOffset, sizeof(IMP_MessageType));
-        return type;
+        return type; 
     }
     
     static long long getDate(const char * const pMessage) {
