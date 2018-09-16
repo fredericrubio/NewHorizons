@@ -22,7 +22,7 @@ class IMP_Message {
      * Constructors
      **/
     IMP_Message();
-    IMP_Message(unsigned long pDate, IMP_MessageType pType);
+    IMP_Message(long long pDate, IMP_MessageType pType);
 
     /**
      * Destructor
@@ -43,6 +43,8 @@ class IMP_Message {
         return lSize;
     };
     
+    /////////////////////////////////////////
+    // Constants and static methods
     // Maximum size of a message (to ease the reception of a message we don't know the type)
     static const unsigned int MAX_SIZE = 255;
     
@@ -50,20 +52,23 @@ class IMP_Message {
         unsigned int lOffset = 0;
         IMP_MessageType type;
         lOffset = sizeof(unsigned long);
-        memcpy(&type, pMessage + lOffset, sizeof(type));
+        memcpy(&type, pMessage + lOffset, sizeof(IMP_MessageType));
         return type;
     }
     
-    static unsigned long getDate(const char * const pMessage) {
-        unsigned long lDate = 0;
-        memcpy(&lDate, pMessage, sizeof(unsigned long));
+    static long long getDate(const char * const pMessage) {
+        unsigned int lOffset = 0;
+        unsigned long lDate;
+        memcpy(&lDate, pMessage + lOffset, sizeof(unsigned long));
         return lDate;
-    };
-    
+    }
+    // Constants and static methods
+    /////////////////////////////////////////
+
     protected :
         IMP_MessageType type;
     
-        unsigned long   date;
+        long long   date; // 'long long' to force 64bits on 32bits OS
     
         IMP_MessageBody* body;
     

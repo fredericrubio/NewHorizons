@@ -12,7 +12,8 @@
 
 int main(int argc, char *argv[])
 {
-    IMP_Client* client = new IMP_Client("localhost", 51717);
+//    IMP_Client* client = new IMP_Client("localhost", 51717);
+    IMP_Client* client = new IMP_Client("192.168.0.22", 51717);
     
     client->initiate();
     
