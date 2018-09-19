@@ -95,6 +95,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B5003D75214EB1A4007DC6C7 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		B5366DF221399FB10040903A /* Client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Client; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5366DF421399FB10040903A /* Cllient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Cllient.cpp; sourceTree = "<group>"; };
 		B5366E082139A0EE0040903A /* Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Server; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +155,7 @@
 		B5366DC821399E960040903A = {
 			isa = PBXGroup;
 			children = (
+				B5003D75214EB1A4007DC6C7 /* .gitignore */,
 				B5366E4F213AF92F0040903A /* DataLib */,
 				B5366E2F213AE41D0040903A /* ComLib */,
 				B5366DF321399FB10040903A /* Client */,
