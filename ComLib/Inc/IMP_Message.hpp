@@ -36,7 +36,7 @@ class IMP_Message {
     const IMP_MessageBody* getBody() {return body;};
 
     virtual size_t getSize() {
-        size_t lSize = sizeof(IMP_MessageType) + sizeof(unsigned long);;
+        size_t lSize = sizeof(type) + sizeof(date);;
         if (body != NULL) {
             lSize += body->getSize();
         }

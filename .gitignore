@@ -33,3 +33,11 @@ DerivedData/
 *.exe
 *.out
 *.app
+/ComLib/build/
+/ComLib/dist/
+/ComLib/.dep.inc
+/DataLib/build/
+/DataLib/dist/
+/Server/build/
+/Server/.dep.inc
+/DataLib/.dep.inc
