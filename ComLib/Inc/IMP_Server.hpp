@@ -21,23 +21,28 @@ public :
     
     bool terminate();
     
-    bool waitForConnection();
-    
+    bool waitForConnectionOnServiceSocket();
+    bool waitForConnectionOnDataSocket();
+
     bool echoing();
 
-    void manageConnection(int);
+    void sendServiceMessages(int);
     
-    bool sendMessage(const size_t pSize, const char* const pMessage);
+    bool sendServiceMessage(const int pClientSocket, const size_t pSize, const char* const pMessage);
     
 protected:
     unsigned int port;
     
-    int sockfd;
+    int infoConnexionSocket;
+    int dataConnexionSocket;
+
+    int infoClientSocket; // to manage a client connection (information, service message, commands, ...)
+    int dataClientSocket; // to manage a client connection (
+
+    std::thread* serviceMessageSendingThread;
+    std::thread* serviceConnectionThread;
     
-    int newsockfd; // to manage a client connection
-    
-    std::thread* clientThread;
-    std::thread* connectionThread;
+    std::thread* dataConnectionThread;
 
 };
 
