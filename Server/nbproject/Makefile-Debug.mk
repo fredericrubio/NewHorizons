@@ -69,7 +69,7 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/server: ${OBJECTFILES}
 ${OBJECTDIR}/Server.o: Server.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../ComLib/Inc -I../DataLib/Inc -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server.o Server.cpp
+	$(COMPILE.cc) -g -I../ComLib/Inc -I../DataLib/Inc -I../Utils/Inc -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server.o Server.cpp
 
 # Subprojects
 .build-subprojects:

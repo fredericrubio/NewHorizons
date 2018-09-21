@@ -14,13 +14,25 @@
 #ifndef IMP_CAMERA_HPP
 #define IMP_CAMERA_HPP
 
+#include "raspicam.h"
+
 class IMP_Camera {
 public:
     IMP_Camera();
-    IMP_Camera(const IMP_Camera& orig);
+
+    bool open();
+    
+    /* 
+     * Captures the next frame and keeps it in internal buffer. 
+     * Blocks until next frame arrives.
+     */
+    bool captureImage();
+    
+    char* getImage();
+    
     virtual ~IMP_Camera();
 private:
-    RaspiCam* raspiCam;
+    raspicam::RaspiCam* raspiCam;
     
 };
 

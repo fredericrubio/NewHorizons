@@ -39,6 +39,7 @@
           <incDir>
             <pElem>../ComLib/Inc</pElem>
             <pElem>../DataLib/Inc</pElem>
+            <pElem>../Utils/Inc</pElem>
           </incDir>
         </ccTool>
         <linkerTool>

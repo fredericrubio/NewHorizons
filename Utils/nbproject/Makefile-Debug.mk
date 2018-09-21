@@ -35,7 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/Src/IMP_Camera.o
+	${OBJECTDIR}/Src/NHO_LOG.o
 
 
 # C Compiler Flags
@@ -56,18 +56,16 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libcameralib.a
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libUtils.${CND_DLIB_EXT}
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libcameralib.a: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libUtils.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libcameralib.a
-	${AR} -rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libcameralib.a ${OBJECTFILES} 
-	$(RANLIB) ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libcameralib.a
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libUtils.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
 
-${OBJECTDIR}/Src/IMP_Camera.o: Src/IMP_Camera.cpp
+${OBJECTDIR}/Src/NHO_LOG.o: Src/NHO_LOG.cpp
 	${MKDIR} -p ${OBJECTDIR}/Src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -IInc -I../RaspiCam/Inc -I../Utils/Inc -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/IMP_Camera.o Src/IMP_Camera.cpp
+	$(COMPILE.cc) -g -IInc -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/NHO_LOG.o Src/NHO_LOG.cpp
 
 # Subprojects
 .build-subprojects:

@@ -10,6 +10,8 @@
 
 #include "IMP_Server.hpp"
 
+#include "NHO_LOG.hpp"
+
 void error(const char *msg)
 {
     perror(msg);
@@ -18,6 +20,8 @@ void error(const char *msg)
 
 int main(int argc, char *argv[])
 {
+    NHO_FILELog::ReportingLevel() = NHO_FILELog::FromString("DEBUG");
+
     IMP_Server* server = new IMP_Server(51717, 51718);
     
     server->initiate();

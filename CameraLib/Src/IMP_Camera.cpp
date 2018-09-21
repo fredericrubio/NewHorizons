@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   IMP_Camera.cpp
  * Author: fredericrubio
@@ -13,12 +7,48 @@
 
 #include "IMP_Camera.hpp"
 
-IMP_Camera::IMP_Camera() {
-}
+#include "NHO_LOG.hpp"
 
-IMP_Camera::IMP_Camera(const IMP_Camera& orig) {
+IMP_Camera::IMP_Camera(): raspiCam(NULL) {
+    
+    raspiCam = new raspicam::RaspiCam();
+    
 }
 
 IMP_Camera::~IMP_Camera() {
+    
+    if (raspiCam != NULL) {
+        delete raspiCam;
+    }
+    
+}
+
+
+bool IMP_Camera::open() {
+    
+    if (raspiCam->open()) {
+        NHO_FILE_LOG(logDEBUG) << "IMP_Camera::open: OK" << std::endl;
+        return true;
+    }
+    
+    NHO_FILE_LOG(logERROR) << "IMP_Camera::open: Error opening camera" << std::endl;
+    return false;
+    
+}
+
+bool IMP_Camera::captureImage() {
+    
+    bool lCapture = raspiCam->grab();
+    
+    NHO_FILE_LOG(logDEBUG) << "IMP_Camera::captureImage: " << lCapture << std::endl;
+ 
+    return lCapture;
+    
+}
+
+char* IMP_Camera::getImage() {
+    
+    return NULL;
+    
 }
 

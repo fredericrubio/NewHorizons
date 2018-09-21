@@ -11,7 +11,7 @@
 
 class IMP_Image {
     
-    typdef enum  ImageType; // have a look on the campi definition
+    typdef enum {} ImageType; // have a look on the campi definition
     public :
         /**
          Default constructor
