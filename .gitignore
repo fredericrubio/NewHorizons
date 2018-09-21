@@ -21,7 +21,6 @@ Server/dist/
 DerivedData/
 
 # Compiled Dynamic libraries
-*.so
 *.dylib
 *.dll
 
