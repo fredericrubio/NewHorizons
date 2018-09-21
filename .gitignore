@@ -1,6 +1,9 @@
 # Prerequisites
 *.d
 
+# Mac OS created folders through NetBeans
+.AppleDouble
+
 # Compiled Object files
 *.slo
 *.lo
@@ -10,6 +13,9 @@
 # Precompiled Headers
 *.gch
 *.pch
+
+# NetBeans Section
+Server/dist/
 
 # XCode section
 DerivedData/
