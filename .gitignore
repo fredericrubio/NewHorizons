@@ -46,3 +46,9 @@ DerivedData/
 /Server/build/
 /Server/.dep.inc
 /DataLib/.dep.inc
+/CameraLib/build/
+/CameraLib/dist/
+/CameraLib/.dep.inc
+/Utils/build/
+/Utils/dist/
+/Utils/.dep.inc
