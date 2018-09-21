@@ -584,6 +584,11 @@
 					"$(inherited)",
 					"LOCAL_HOST=1",
 				);
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = (
+					"DEBUG=1",
+					"$(inherited)",
+					"MAC_OS=1",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -592,7 +597,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "LOCAL_HOST=1";
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "MAC_OS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -23,7 +23,7 @@
 
 #define _DEBUG
 
-IMP_Server::IMP_Server(unsigned int pPort): port(pPort), infoConnexionSocket(0) {
+IMP_Server::IMP_Server(const unsigned int pInfoPort, const unsigned int pDataPort): infoPort(pInfoPort), dataPort(pDataPort),  infoConnexionSocket(0), dataConnexionSocket(0) {
     
 }
 
@@ -31,23 +31,43 @@ bool IMP_Server::initiate() {
 #ifdef _DEBUG
     std::cout << "IMP_Server::initiate \n";
 #endif
-    struct sockaddr_in serv_addr;
+    struct sockaddr_in lInfoServAddr;
+    // service channel
     infoConnexionSocket = socket(AF_INET, SOCK_STREAM, 0);
     if (infoConnexionSocket < 0) {
+        fprintf(stderr, "ERROR opening socket");
+        return(false);
+    }
+    bzero((char *) &lInfoServAddr, sizeof(lInfoServAddr));
+    lInfoServAddr.sin_family = AF_INET;
+    lInfoServAddr.sin_addr.s_addr = INADDR_ANY;
+    lInfoServAddr.sin_port = htons(infoPort);
+    if (bind(infoConnexionSocket, (struct sockaddr *) &lInfoServAddr, sizeof(lInfoServAddr)) < 0) {
+        std::cout << "IMP_Server: ERROR on binding " << std::endl;
+        return(false);
+    }
+
+    // data channel
+    struct sockaddr_in serv_addr;
+    dataConnexionSocket = socket(AF_INET, SOCK_STREAM, 0);
+    if (dataConnexionSocket < 0) {
         fprintf(stderr, "ERROR opening socket");
         return(false);
     }
     bzero((char *) &serv_addr, sizeof(serv_addr));
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_addr.s_addr = INADDR_ANY;
-    serv_addr.sin_port = htons(port);
-    if (bind(infoConnexionSocket, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) {
+    serv_addr.sin_port = htons(dataPort);
+    if (bind(dataConnexionSocket, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) {
         std::cout << "IMP_Server: ERROR on binding " << std::endl;
         return(false);
     }
-
     // launch the connexion thread
+    /// service channel
     serviceConnectionThread = new std::thread(&IMP_Server::waitForConnectionOnServiceSocket, std::ref(*this));
+    
+    /// data channel
+    dataConnectionThread = new std::thread(&IMP_Server::waitForConnectionOnDataSocket, std::ref(*this));
     
 #ifdef _DEBUG
     std::cout << "IMP_Server::initiate End\n";
@@ -111,7 +131,7 @@ bool IMP_Server::waitForConnectionOnDataSocket() {
 ////////////////////////////////
 // Never ending loop.
 // Wait and register a connexion on the main socket.
-// Launch a thread to send service messages to the new connected client.
+// Launch a thread to send all service messages at once to the new connected client.
 bool IMP_Server::waitForConnectionOnServiceSocket() {
 #ifdef _DEBUG
     std::cout << "IMP_Server::waitForConnection \n";
@@ -123,6 +143,7 @@ bool IMP_Server::waitForConnectionOnServiceSocket() {
     clilen = sizeof(cli_addr);
     
     while (1) {
+        // establish connextion for service channel
         infoClientSocket = accept(infoConnexionSocket,
                            (struct sockaddr *) &cli_addr,
                            &clilen);
@@ -156,7 +177,7 @@ void IMP_Server::sendServiceMessages(int pClientPort) {
     
     // set image size
     /// encode message
-    // create message
+    // create and serialize message
     char*   lArray = NULL;
     IMP_Message* lMessage = new IMP_Message(clock(), IMP_Message::eImageSize);
     ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->setWidth(123);
@@ -166,6 +187,10 @@ void IMP_Server::sendServiceMessages(int pClientPort) {
     /// send message
     sendServiceMessage(pClientPort, lMessage->getSize(), lArray);
 
+    // set image format
+    /// encode message
+    // create and serialize message
+    
     // set camera parameters
     /// encode message
     /// send message

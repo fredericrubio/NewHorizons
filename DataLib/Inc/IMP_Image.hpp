@@ -9,9 +9,9 @@
 #ifndef IMP_Image_hpp
 #define IMP_Image_hpp
 
-#include <stdio.h>
 class IMP_Image {
     
+    typdef enum  ImageType; // have a look on the campi definition
     public :
         /**
          Default constructor

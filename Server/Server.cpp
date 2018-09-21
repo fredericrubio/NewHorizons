@@ -18,7 +18,7 @@ void error(const char *msg)
 
 int main(int argc, char *argv[])
 {
-    IMP_Server* server = new IMP_Server(51717);
+    IMP_Server* server = new IMP_Server(51717, 51718);
     
     server->initiate();
     

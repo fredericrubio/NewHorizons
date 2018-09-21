@@ -15,8 +15,11 @@
 class IMP_Server {
     
 public :
-    IMP_Server(unsigned int pPort);
+    IMP_Server(const unsigned int pInfoPort, const unsigned int pDataPort);
     
+    /**
+     * launch the thread dedicaded to connexion
+     **/
     bool initiate();
     
     bool terminate();
@@ -31,13 +34,14 @@ public :
     bool sendServiceMessage(const int pClientSocket, const size_t pSize, const char* const pMessage);
     
 protected:
-    unsigned int port;
-    
+    unsigned int infoPort;
+    unsigned int dataPort;
+
     int infoConnexionSocket;
     int dataConnexionSocket;
 
     int infoClientSocket; // to manage a client connection (information, service message, commands, ...)
-    int dataClientSocket; // to manage a client connection (
+    int dataClientSocket; // to manage a client connection
 
     std::thread* serviceMessageSendingThread;
     std::thread* serviceConnectionThread;

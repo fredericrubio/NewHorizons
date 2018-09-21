@@ -12,10 +12,10 @@
 
 int main(int argc, char *argv[])
 {
-#ifdef LOCAL_HOST
-    IMP_Client* client = new IMP_Client("localhost", 51717);
+#ifdef MAC_OS
+    IMP_Client* client = new IMP_Client("localhost", 51717, 51718);
 #else
-    IMP_Client* client = new IMP_Client("192.168.0.22", 51717);
+    IMP_Client* client = new IMP_Client("192.168.0.22", 51717, 51718);
 #endif
     
     client->initiate();

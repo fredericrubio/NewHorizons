@@ -16,7 +16,7 @@
 class IMP_Client {
     
     public :
-    IMP_Client(const std::string pHostName, const unsigned int pPort);
+    IMP_Client(const std::string pHostName, const unsigned int pInfoPort, const int pDataPort);
     
     bool initiate();
     
@@ -26,18 +26,23 @@ class IMP_Client {
     
     void manageConnection(int);
     
-    bool receiveMessage();
-  
+    bool receiveInfoMessage();
+    
+    bool receiveDataMessage();
+
     bool sendMessage(const size_t pSize, const char* const pMessage);
 
 protected:
-    unsigned int port;
-    
+    unsigned int infoPort;
+    unsigned int dataPort;
+
     std::string hostName;
     
-    int sockfd;
-    
-    std::thread* serverThread;
+    int infoSocket;
+    int dataSocket;
+
+    std::thread* infoThread;
+    std::thread* dataThread;
     std::thread* connectionThread;
     
 };
