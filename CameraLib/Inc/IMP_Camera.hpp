@@ -21,6 +21,7 @@ public:
     IMP_Camera();
 
     bool open();
+    bool isOpened() const ;
     
     /* 
      * Captures the next frame and keeps it in internal buffer. 
@@ -28,11 +29,12 @@ public:
      */
     bool captureImage();
     
-    char* getImage();
+    unsigned char* getImage(unsigned int* const pSize);
     
     virtual ~IMP_Camera();
-private:
-    raspicam::RaspiCam* raspiCam;
+    
+public:
+    raspicam::RaspiCam* raspCam;
     
 };
 

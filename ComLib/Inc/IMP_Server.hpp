@@ -11,6 +11,10 @@
 
 #include <stdio.h>
 #include <thread>
+#include <mutex>
+
+#include "IMP_Image.hpp"
+#include "IMP_Camera.hpp"
 
 class IMP_Server {
     
@@ -26,6 +30,7 @@ public :
     
     bool waitForConnectionOnServiceSocket();
     bool waitForConnectionOnDataSocket();
+    void captureImage();
 
     bool echoing();
 
@@ -48,6 +53,17 @@ protected:
     
     std::thread* dataConnectionThread;
 
+    // Image Section
+    /// Capture Thread
+    std::thread* imageCaptureThread;
+    /// Current Image 
+    IMP_Image* image;
+    /// Mutex
+    std::mutex imageMutex;
+    /// time elapsed betwween to capture (ms)
+    unsigned short period; 
+    IMP_Camera camera;
+    
 };
 
 #endif /* IMP_Server_hpp */

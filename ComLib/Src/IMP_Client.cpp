@@ -192,6 +192,8 @@ bool IMP_Client::receiveInfoMessage() {
                     ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->getWidth()
                     << " " <<
                     ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->getHeight()
+                    << " " <<
+                    ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->getFormat()
                     << std::endl;
                 break;
                 

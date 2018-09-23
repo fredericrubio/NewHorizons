@@ -49,6 +49,10 @@
         <ccTool>
           <incDir>
             <pElem>Inc</pElem>
+            <pElem>../DataLib/Inc</pElem>
+            <pElem>../CameraLib/Inc</pElem>
+            <pElem>../RaspiCam/Inc</pElem>
+            <pElem>../Utils/Inc</pElem>
           </incDir>
         </ccTool>
       </compileType>

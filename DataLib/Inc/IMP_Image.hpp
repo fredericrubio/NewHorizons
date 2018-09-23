@@ -9,20 +9,46 @@
 #ifndef IMP_Image_hpp
 #define IMP_Image_hpp
 
+#include <stdlib.h>
+
 class IMP_Image {
-    
-    typdef enum {} ImageType; // have a look on the campi definition
+
     public :
         /**
          Default constructor
          **/
         IMP_Image();
     
+        /*
+         *Image formats
+         */
+       typedef enum {
+           FORMAT_YUV420 = 0,
+           FORMAT_GRAY,
+           FORMAT_BGR,
+           FORMAT_RGB,
+           FORMAT_IGNORE //do not use
+       } IMAGE_FORMAT;
+    
+       /**
+        * Getters and setters
+        **/
+       unsigned int getWidth() const {return width;} ;
+       unsigned int getHeight() const {return height;} ;
+       unsigned int getFormat() const {return format;} ;
+       const unsigned char* getPixels() const {return pixels;} ;
+
+       void setWidth(const unsigned int pValue) {width = pValue;} ;
+       void setHeight(const unsigned int pValue) {height = pValue;} ;
+       void setFormat(const IMAGE_FORMAT pValue) {format = pValue;} ;
+       void setPixels(const unsigned int pSize, unsigned char* const pPixels) {size = pSize;if (pixels != NULL) {free(pixels);}pixels = pPixels;} ;
+       
     private :
         unsigned int width;
         unsigned int height;
-    
-        float* pixels;
+        IMAGE_FORMAT format;
+        unsigned int size;
+        unsigned char* pixels;
     
     protected :
     

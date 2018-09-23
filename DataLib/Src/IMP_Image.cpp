@@ -11,6 +11,6 @@
 /**
  Default constructor
  **/
-IMP_Image::IMP_Image():width(0) , height(0), pixels(NULL){
+IMP_Image::IMP_Image():width(0) , height(0), pixels(NULL), format(FORMAT_IGNORE){
     
 }

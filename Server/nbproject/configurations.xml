@@ -40,6 +40,8 @@
             <pElem>../ComLib/Inc</pElem>
             <pElem>../DataLib/Inc</pElem>
             <pElem>../Utils/Inc</pElem>
+            <pElem>../CameraLib/Inc</pElem>
+            <pElem>../RaspiCam/Inc</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
@@ -67,6 +69,31 @@
                             BC="${MAKE}  -f Makefile CONF=Debug"
                             CC="${MAKE}  -f Makefile CONF=Debug clean"
                             OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdatalib.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../CameraLib"
+                            CT="3"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../CameraLib"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libcameralib.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibFileItem>../RaspiCam/Lib/libraspicam.so</linkerLibFileItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../Utils"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../Utils"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libUtils.${CND_DLIB_EXT}">
               </makeArtifact>
             </linkerLibProjectItem>
           </linkerLibItems>

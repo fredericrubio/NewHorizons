@@ -10,6 +10,8 @@
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects>
                 <make-dep-project>../ComLib</make-dep-project>
+                <make-dep-project>../CameraLib</make-dep-project>
+                <make-dep-project>../Utils</make-dep-project>
                 <make-dep-project>../DataLib</make-dep-project>
             </make-dep-projects>
             <sourceRootList/>

@@ -9,16 +9,16 @@
 
 #include "NHO_LOG.hpp"
 
-IMP_Camera::IMP_Camera(): raspiCam(NULL) {
+IMP_Camera::IMP_Camera(): raspCam(NULL) {
     
-    raspiCam = new raspicam::RaspiCam();
+    raspCam = new raspicam::RaspiCam();
     
 }
 
 IMP_Camera::~IMP_Camera() {
     
-    if (raspiCam != NULL) {
-        delete raspiCam;
+    if (raspCam != NULL) {
+        delete raspCam;
     }
     
 }
@@ -26,7 +26,7 @@ IMP_Camera::~IMP_Camera() {
 
 bool IMP_Camera::open() {
     
-    if (raspiCam->open()) {
+    if (raspCam->open()) {
         NHO_FILE_LOG(logDEBUG) << "IMP_Camera::open: OK" << std::endl;
         return true;
     }
@@ -36,19 +36,48 @@ bool IMP_Camera::open() {
     
 }
 
+/*
+ * Indicates if camera is opened
+ */
+bool IMP_Camera::isOpened() const {
+
+    if (raspCam == NULL) {
+        NHO_FILE_LOG(logDEBUG) << "IMP_Camera::isOpened: Camera not initialized" << std::endl;
+        return false;
+    }
+    
+    return  raspCam->isOpened();
+    
+}
+
 bool IMP_Camera::captureImage() {
     
-    bool lCapture = raspiCam->grab();
+    bool lCapture = raspCam->grab();
     
+#ifdef _DEBUG
     NHO_FILE_LOG(logDEBUG) << "IMP_Camera::captureImage: " << lCapture << std::endl;
- 
+#endif
+    
     return lCapture;
     
 }
 
-char* IMP_Camera::getImage() {
+unsigned char* IMP_Camera::getImage(unsigned int* const pSize) {
+
+    if (raspCam == NULL) {
+        NHO_FILE_LOG(logERROR) << "IMP_Camera::getImage: Camera not initialized" << std::endl;
+        return NULL;
+    }
     
-    return NULL;
+    unsigned char* lData = NULL;
+    // get the image
+    *pSize = raspCam->getImageTypeSize( raspicam::RASPICAM_FORMAT_RGB );
+    lData = new unsigned char[*pSize];
+    
+    //extract the image in rgb format
+    raspCam->retrieve(lData, raspicam::RASPICAM_FORMAT_RGB );
+
+    return lData;
     
 }
 

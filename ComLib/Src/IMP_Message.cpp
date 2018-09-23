@@ -21,7 +21,7 @@ IMP_Message::IMP_Message(long long pDate, IMP_MessageType pType): date(pDate), t
 
     switch(type) {
         case eImageSize:
-            body = new IMP_ImageSizeMessageBody(10, 10);
+            body = new IMP_ImageSizeMessageBody();
         break;
         case eCameraParameters:
         case eImage:

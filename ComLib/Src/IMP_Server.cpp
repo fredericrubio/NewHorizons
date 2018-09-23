@@ -14,17 +14,30 @@
 #include <stdlib.h>
 #include <string.h>
 #include <iostream>
+#include <mutex>
 
 #include "IMP_Server.hpp"
-
+#include "NHO_LOG.hpp"
 #include "IMP_Message.hpp"
 #include "IMP_ImageSizeMessageBody.hpp"
 #include "IMP_AckMessageBody.hpp"
 
 #define _DEBUG
 
-IMP_Server::IMP_Server(const unsigned int pInfoPort, const unsigned int pDataPort): infoPort(pInfoPort), dataPort(pDataPort),  infoConnexionSocket(0), dataConnexionSocket(0) {
+IMP_Server::IMP_Server(const unsigned int pInfoPort, const unsigned int pDataPort):
+infoPort(pInfoPort), dataPort(pDataPort),  infoConnexionSocket(0), dataConnexionSocket(0) {
+
+    period = 1000;
     
+    camera.raspCam->open();
+    std::this_thread::sleep_for (std::chrono::seconds(4));
+    
+    if (camera.raspCam->grab() == true) {
+        NHO_FILE_LOG(logDEBUG) << "IMP_Server::IMP_Server: Capture"  << std::endl;
+    }
+    else {
+        NHO_FILE_LOG(logDEBUG) << "IMP_Server::IMP_Server: No Capture" << std::endl;
+    }
 }
 
 bool IMP_Server::initiate() {
@@ -65,9 +78,9 @@ bool IMP_Server::initiate() {
     // launch the connexion thread
     /// service channel
     serviceConnectionThread = new std::thread(&IMP_Server::waitForConnectionOnServiceSocket, std::ref(*this));
-    
     /// data channel
     dataConnectionThread = new std::thread(&IMP_Server::waitForConnectionOnDataSocket, std::ref(*this));
+    imageCaptureThread = new std::thread(&IMP_Server::captureImage, std::ref(*this));
     
 #ifdef _DEBUG
     std::cout << "IMP_Server::initiate End\n";
@@ -93,7 +106,44 @@ bool IMP_Server::terminate() {
     return(true);
     
 }
+#include <time.h> 
+/////////////////////////////////
+// Method called by the thread capturging the images.
+// Only one image is available: the latest captured.
+void IMP_Server::captureImage() {
 
+    unsigned char*  lPixels;
+    unsigned int    lSize;
+    std::chrono::time_point<std::chrono::steady_clock> start_time;
+    std::chrono::time_point<std::chrono::steady_clock> end_time;
+    std::chrono::system_clock::duration duration;
+    clock_t t1, t2;
+    
+    // check whether the camera is opened or not
+    
+    do {
+        t1 = clock();
+        start_time = std::chrono::steady_clock::now();
+        if (camera.captureImage() == true) {
+            lPixels = camera.getImage(&lSize);
+            image->setPixels(lSize, lPixels);
+            
+            end_time = std::chrono::steady_clock::now();
+            t2 = clock();
+
+            NHO_FILE_LOG(logDEBUG) << "IMP_Server::captureImage: " << t2 - t1 << std::endl;
+//        NHO_FILE_LOG(logDEBUG) << "IMP_Server::captureImage: " << std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count() << std::endl;
+//        NHO_FILE_LOG(logDEBUG) << "IMP_Server::captureImage " << std::endl;
+        }
+        else {
+            NHO_FILE_LOG(logDEBUG) << "IMP_Server::captureImage: No Capture" << std::endl;
+        }
+
+        std::this_thread::sleep_for (std::chrono::milliseconds(period));
+    }
+    while(1);
+    
+}
 ////////////////////////////////
 // Never ending loop.
 // Wait and register a connexion on the main socket.
@@ -182,6 +232,7 @@ void IMP_Server::sendServiceMessages(int pClientPort) {
     IMP_Message* lMessage = new IMP_Message(clock(), IMP_Message::eImageSize);
     ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->setWidth(123);
     ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->setHeight(456);
+    ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->setFormat(IMP_Image::FORMAT_RGB);
     lMessage->serialize(&lArray);
 
     /// send message
@@ -201,7 +252,7 @@ void IMP_Server::sendServiceMessages(int pClientPort) {
 }
 
 ///////////////////////////
-// Send a service message.
+// Send one service message.
 bool IMP_Server::sendServiceMessage(const int pClientSocket, const size_t pSize, const char* const pMessage) {
 #ifdef _DEBUG
     std::cout << "IMP_Server::sendServiceMessage \n";
@@ -262,4 +313,3 @@ bool IMP_Server::echoing() {
     return(true);
     
 }
-

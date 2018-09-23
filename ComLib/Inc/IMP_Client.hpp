@@ -13,6 +13,8 @@
 #include <thread>
 #include <stdio.h>
 
+#include "IMP_Image.hpp"
+
 class IMP_Client {
     
     public :
@@ -45,5 +47,9 @@ protected:
     std::thread* dataThread;
     std::thread* connectionThread;
     
+    // Image parameters
+    unsigned int imageWidth;
+    unsigned int imageHeight;
+    IMP_Image::IMAGE_FORMAT imageFormat;
 };
 #endif /* IMP_Client_hpp */

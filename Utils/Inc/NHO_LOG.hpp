@@ -17,6 +17,7 @@
 #include <sstream>
 #include <string>
 #include <stdio.h>
+#include <sys/time.h>
 
 inline std::string NowTime();
 
@@ -97,8 +98,6 @@ typedef NHO_LOG NHO_FILELog;
 #define NHO_FILE_LOG(level) \
     if (level > NHO_FILELog::ReportingLevel()) ; \
     else NHO_LOG().Get(level)
-
-#include <sys/time.h>
 
 inline std::string NowTime()
 {
