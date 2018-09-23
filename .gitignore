@@ -17,6 +17,9 @@
 # NetBeans Section
 Server/dist/
 
+# Mac OS Section
+.DS_Store
+
 # XCode section
 DerivedData/
 
