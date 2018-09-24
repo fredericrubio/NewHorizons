@@ -21,6 +21,7 @@
 #include "IMP_Message.hpp"
 #include "IMP_ImageSizeMessageBody.hpp"
 #include "IMP_AckMessageBody.hpp"
+#include "IMP_Image.hpp"
 
 #define _DEBUG
 
@@ -29,15 +30,11 @@ infoPort(pInfoPort), dataPort(pDataPort),  infoConnexionSocket(0), dataConnexion
 
     period = 1000;
     
-    camera.raspCam->open();
+    image = new IMP_Image();
+ 
+    camera.open();
     std::this_thread::sleep_for (std::chrono::seconds(4));
-    
-    if (camera.raspCam->grab() == true) {
-        NHO_FILE_LOG(logDEBUG) << "IMP_Server::IMP_Server: Capture"  << std::endl;
-    }
-    else {
-        NHO_FILE_LOG(logDEBUG) << "IMP_Server::IMP_Server: No Capture" << std::endl;
-    }
+ 
 }
 
 bool IMP_Server::initiate() {

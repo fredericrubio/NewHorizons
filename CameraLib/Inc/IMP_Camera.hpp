@@ -33,7 +33,7 @@ public:
     
     virtual ~IMP_Camera();
     
-public:
+protected:
     raspicam::RaspiCam* raspCam;
     
 };

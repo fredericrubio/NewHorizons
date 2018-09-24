@@ -9,7 +9,7 @@
 
 #include "NHO_LOG.hpp"
 
-IMP_Camera::IMP_Camera(): raspCam(NULL) {
+IMP_Camera::IMP_Camera() {
     
     raspCam = new raspicam::RaspiCam();
     
@@ -17,9 +17,9 @@ IMP_Camera::IMP_Camera(): raspCam(NULL) {
 
 IMP_Camera::~IMP_Camera() {
     
-    if (raspCam != NULL) {
-        delete raspCam;
-    }
+//    if (raspCam != NULL) {
+//        delete raspCam;
+//    }
     
 }
 
@@ -41,10 +41,10 @@ bool IMP_Camera::open() {
  */
 bool IMP_Camera::isOpened() const {
 
-    if (raspCam == NULL) {
-        NHO_FILE_LOG(logDEBUG) << "IMP_Camera::isOpened: Camera not initialized" << std::endl;
-        return false;
-    }
+//    if (raspCam == NULL) {
+//        NHO_FILE_LOG(logDEBUG) << "IMP_Camera::isOpened: Camera not initialized" << std::endl;
+//        return false;
+//    }
     
     return  raspCam->isOpened();
     
@@ -64,10 +64,10 @@ bool IMP_Camera::captureImage() {
 
 unsigned char* IMP_Camera::getImage(unsigned int* const pSize) {
 
-    if (raspCam == NULL) {
-        NHO_FILE_LOG(logERROR) << "IMP_Camera::getImage: Camera not initialized" << std::endl;
-        return NULL;
-    }
+//    if (raspCam == NULL) {
+//        NHO_FILE_LOG(logERROR) << "IMP_Camera::getImage: Camera not initialized" << std::endl;
+//        return NULL;
+//    }
     
     unsigned char* lData = NULL;
     // get the image
