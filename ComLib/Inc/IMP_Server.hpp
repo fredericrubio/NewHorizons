@@ -38,6 +38,7 @@ public :
     
     bool sendServiceMessage(const int pClientSocket, const size_t pSize, const char* const pMessage);
     
+    bool sendImage(const IMP_Image* const pImage);
 protected:
     unsigned int infoPort;
     unsigned int dataPort;

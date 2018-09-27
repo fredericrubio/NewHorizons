@@ -19,11 +19,13 @@
 IMP_ImageSizeMessageBody::IMP_ImageSizeMessageBody(
         const unsigned int pWidth, 
         const unsigned int pHeight,
-        const unsigned int pFormat):width(pWidth), height(pHeight), format(pFormat) {
+        const unsigned int pSize,
+        const unsigned int pFormat):
+width(pWidth), height(pHeight), format(pFormat), dataSize(pSize) {
     
 }
 
-IMP_ImageSizeMessageBody::IMP_ImageSizeMessageBody():width(0), height(0), format(IMP_Image::FORMAT_IGNORE) {
+IMP_ImageSizeMessageBody::IMP_ImageSizeMessageBody():width(0), height(0), dataSize(0), format(IMP_Image::FORMAT_IGNORE) {
     
 }
 
@@ -59,6 +61,6 @@ bool IMP_ImageSizeMessageBody::unserialize(const char * const pSerializedArray) 
 
 size_t IMP_ImageSizeMessageBody::getSize() {
     
-    return sizeof(unsigned int) * 3;
+    return sizeof(unsigned int) * 4;
     
 }

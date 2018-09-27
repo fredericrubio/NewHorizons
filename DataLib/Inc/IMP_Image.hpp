@@ -33,11 +33,12 @@ class IMP_Image {
        /**
         * Getters and setters
         **/
-       unsigned int getWidth() const {return width;} ;
-       unsigned int getHeight() const {return height;} ;
-       unsigned int getFormat() const {return format;} ;
-       const unsigned char* getPixels() const {return pixels;} ;
-
+       inline unsigned int getWidth() const {return width;} ;
+       inline unsigned int getHeight() const {return height;} ;
+       inline unsigned int getFormat() const {return format;} ;
+       inline const unsigned char* getPixels() const {return pixels;} ;
+       inline  unsigned int getDataSize() const {return size; } ;
+       
        void setWidth(const unsigned int pValue) {width = pValue;} ;
        void setHeight(const unsigned int pValue) {height = pValue;} ;
        void setFormat(const IMAGE_FORMAT pValue) {format = pValue;} ;

@@ -115,32 +115,77 @@ void IMP_Server::captureImage() {
     std::chrono::time_point<std::chrono::steady_clock> end_time;
     std::chrono::system_clock::duration duration;
     clock_t t1, t2;
+    unsigned int lElapsedTime = 0;
     
     // check whether the camera is opened or not
     
     do {
-        t1 = clock();
         start_time = std::chrono::steady_clock::now();
         if (camera.captureImage() == true) {
             lPixels = camera.getImage(&lSize);
             image->setPixels(lSize, lPixels);
             
-            end_time = std::chrono::steady_clock::now();
-            t2 = clock();
-
-            NHO_FILE_LOG(logDEBUG) << "IMP_Server::captureImage: " << t2 - t1 << std::endl;
-//        NHO_FILE_LOG(logDEBUG) << "IMP_Server::captureImage: " << std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count() << std::endl;
-//        NHO_FILE_LOG(logDEBUG) << "IMP_Server::captureImage " << std::endl;
+//            sendImage(image);
+              NHO_FILE_LOG(logDEBUG) << "IMP_Server::captureImage: " << camera.getWidth() << std::endl;      
+              NHO_FILE_LOG(logDEBUG) << "IMP_Server::captureImage: " << camera.getHeight() << std::endl;      
+              NHO_FILE_LOG(logDEBUG) << "IMP_Server::captureImage: " << image->getDataSize() << std::endl;      
+            
+            end_time = std::chrono::steady_clock::now();                        
+            lElapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();            
         }
         else {
+            lElapsedTime = 0;
             NHO_FILE_LOG(logDEBUG) << "IMP_Server::captureImage: No Capture" << std::endl;
         }
-
-        std::this_thread::sleep_for (std::chrono::milliseconds(period));
+        NHO_FILE_LOG(logDEBUG) << "IMP_Server::captureImage: " << lElapsedTime << std::endl;      
+        
+        std::this_thread::sleep_for (std::chrono::milliseconds(period - lElapsedTime));
     }
     while(1);
     
 }
+
+///////////////////////////
+// Send an image message.
+bool IMP_Server::sendImage(const IMP_Image* const pImage) {
+#ifdef _DEBUG
+    std::cout << "IMP_Server::sendImage \n";
+#endif
+    // send message
+    size_t lWrittenBytes = write(dataClientSocket, pImage->getPixels(), pImage->getDataSize());
+    if (lWrittenBytes != pImage->getDataSize()) {
+        std::cout << "ERROR IMP_Server::sendImage" << std::endl;
+        return(false);
+    }
+    
+    // wait for an answer
+    long lReceivedBytes;
+    IMP_AckMessageBody* lAckMsg = new IMP_AckMessageBody();
+    char* lBuffer = (char *) calloc(lAckMsg->getSize(), sizeof(char));
+    
+    lReceivedBytes = read(dataClientSocket, lBuffer, lAckMsg->getSize());
+    if (lReceivedBytes < 0) {
+        std::cout << "ERROR IMP_Server::sendImage" << std::endl;
+        return(false);
+    }
+    
+    // check the answer
+    lAckMsg->unserialize(lBuffer);
+    if (lAckMsg->getStatus() != pImage->getDataSize()) {
+        std::cout << "ERROR IMP_Server::sendImage <invalid ack status>" << std::endl;
+        return(false);
+    }
+    
+    // memory management
+    if (lBuffer != NULL) {
+        delete lBuffer;
+    }
+#ifdef _DEBUG
+    std::cout << "IMP_Server::sendImage End" << std::endl;
+#endif
+    return(true);
+}
+
 ////////////////////////////////
 // Never ending loop.
 // Wait and register a connexion on the main socket.

@@ -33,6 +33,9 @@ public:
     
     virtual ~IMP_Camera();
     
+    unsigned int getWidth() const;
+    unsigned int getHeight() const;
+        
 protected:
     raspicam::RaspiCam* raspCam;
     

@@ -17,7 +17,10 @@ class IMP_ImageSizeMessageBody : public IMP_MessageBody {
     
     public :
     IMP_ImageSizeMessageBody();
-    IMP_ImageSizeMessageBody(const unsigned int pWidth, const unsigned int pHeight, const unsigned int pFormat) ;
+    IMP_ImageSizeMessageBody(   const unsigned int pWidth, 
+                                const unsigned int pHeight, 
+                                const unsigned int pFormat,
+                                const unsigned int pDataSize) ;
     
     bool serialize(char * const);
 
@@ -28,18 +31,21 @@ class IMP_ImageSizeMessageBody : public IMP_MessageBody {
     /**
      * Getters and setters
      **/
-    unsigned int getWidth() const {return width;} ;
-    unsigned int getHeight() const {return height;} ;
-    unsigned int getFormat() const {return format;} ;
+    inline unsigned int getWidth() const {return width;} ;
+    inline unsigned int getHeight() const {return height;} ;
+    inline unsigned int getFormat() const {return format;} ;
+    inline unsigned int getDataSize() const {return dataSize;} ;
     
-    void setWidth(const unsigned int pValue) {width = pValue;} ;
-    void setHeight(const unsigned int pValue) {height = pValue;} ;
-    void setFormat(const unsigned int pValue) {format = pValue;} ;
+    inline void setWidth(const unsigned int pValue) {width = pValue;} ;
+    inline void setHeight(const unsigned int pValue) {height = pValue;} ;
+    inline void setFormat(const unsigned int pValue) {format = pValue;} ;
+    inline void setDataSize(const unsigned int pValue) {dataSize = pValue;} ;
 
     protected :
     unsigned int width;
     unsigned int height;
     unsigned int format;
+    unsigned int dataSize;
 
 };
 #endif /* IMP_ImageSizeMessageBody_hpp */

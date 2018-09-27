@@ -109,33 +109,21 @@ bool IMP_Client::receiveDataMessage() {
 #endif
     
     // the sizes of transferred images is known:
-    char lBuffer[IMP_Message::MAX_SIZE];
+    char* lBuffer = (char *) calloc(image.getDataSize(), sizeof(char));
     long lReceivedBytes;
     IMP_Message* lMessage = NULL;
     
     while (1) {
         // wait for an answer
-        bzero(lBuffer, sizeof(unsigned int));
-        lReceivedBytes = read(dataSocket, lBuffer, IMP_Message::MAX_SIZE);
+        bzero(lBuffer, image.getDataSize());
+        lReceivedBytes = read(dataSocket, lBuffer, image.getDataSize());
         if (lReceivedBytes < 0) {
             std::cout << "ERROR IMP_Client::receiveDataMessage" << std::endl;
             return(false);
         }
         
-        switch (IMP_Message::getType(lBuffer)) {
-            case IMP_Message::eImageSize:
-                lMessage = new IMP_Message(IMP_Message::getDate(lBuffer), IMP_Message::getType(lBuffer));
-                lMessage->unserialize(lBuffer);
-                std::cout << "IMP_Client::receiveDataMessage Image Size " <<
-                ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->getWidth()
-                << " " <<
-                ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->getHeight()
-                << std::endl;
-                break;
-                
-            default:
-                break;
-        }
+        image.setPixels(lBuffer);
+
         // send an aknownledgement
         IMP_AckMessageBody* lAckMsg = new IMP_AckMessageBody(lReceivedBytes);
         char* lContents = (char *) calloc(lAckMsg->getSize(), sizeof(char));
@@ -188,13 +176,16 @@ bool IMP_Client::receiveInfoMessage() {
             case IMP_Message::eImageSize:
                 lMessage = new IMP_Message(IMP_Message::getDate(lBuffer), IMP_Message::getType(lBuffer));
                 lMessage->unserialize(lBuffer);
-                std::cout << "IMP_Client::receiveInfoMessage Image Size " <<
-                    ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->getWidth()
-                    << " " <<
-                    ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->getHeight()
-                    << " " <<
-                    ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->getFormat()
-                    << std::endl;
+                image.setWidth(((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->getWidth());
+                image.setHeight(((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->getHeight());
+                image.setFormat((IMP_Image::IMAGE_FORMAT) ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->getFormat());
+//                std::cout << "IMP_Client::receiveInfoMessage Image Size " <<
+//                    ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->getWidth()
+//                    << " " <<
+//                    ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->getHeight()
+//                    << " " <<
+//                    ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->getFormat()
+//                    << std::endl;
                 break;
                 
             default:

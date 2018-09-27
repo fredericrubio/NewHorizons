@@ -51,5 +51,6 @@ protected:
     unsigned int imageWidth;
     unsigned int imageHeight;
     IMP_Image::IMAGE_FORMAT imageFormat;
+    IMP_Image   image;
 };
 #endif /* IMP_Client_hpp */
