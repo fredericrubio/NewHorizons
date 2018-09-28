@@ -109,7 +109,7 @@ bool IMP_Client::receiveDataMessage() {
 #endif
     
     // the sizes of transferred images is known:
-    char* lBuffer = (char *) calloc(image.getDataSize(), sizeof(char));
+    unsigned char* lBuffer = (unsigned char *) calloc(image.getDataSize(), sizeof(char));
     long lReceivedBytes;
     IMP_Message* lMessage = NULL;
     
@@ -122,7 +122,7 @@ bool IMP_Client::receiveDataMessage() {
             return(false);
         }
         
-        image.setPixels(lBuffer);
+        image.setPixels(image.getDataSize(), lBuffer);
 
         // send an aknownledgement
         IMP_AckMessageBody* lAckMsg = new IMP_AckMessageBody(lReceivedBytes);
