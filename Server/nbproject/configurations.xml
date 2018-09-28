@@ -39,9 +39,9 @@
           <incDir>
             <pElem>../ComLib/Inc</pElem>
             <pElem>../DataLib/Inc</pElem>
-            <pElem>../Utils/Inc</pElem>
             <pElem>../CameraLib/Inc</pElem>
             <pElem>../RaspiCam/Inc</pElem>
+            <pElem>../UtilsLib/Inc</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
@@ -85,15 +85,15 @@
             </linkerLibProjectItem>
             <linkerLibFileItem>../RaspiCam/Lib/libraspicam.so</linkerLibFileItem>
             <linkerLibProjectItem>
-              <makeArtifact PL="../Utils"
+              <makeArtifact PL="../UtilsLib"
                             CT="2"
                             CN="Debug"
                             AC="true"
                             BL="true"
-                            WD="../Utils"
+                            WD="../UtilsLib"
                             BC="${MAKE}  -f Makefile CONF=Debug"
                             CC="${MAKE}  -f Makefile CONF=Debug clean"
-                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libUtils.${CND_DLIB_EXT}">
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libUtilsLib.${CND_DLIB_EXT}">
               </makeArtifact>
             </linkerLibProjectItem>
           </linkerLibItems>

@@ -52,7 +52,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-lpthread -Wl,-rpath,'../ComLib/dist/Debug/GNU-Linux' -L../ComLib/dist/Debug/GNU-Linux -lComLib ../DataLib/dist/Debug/GNU-Linux/libdatalib.a ../CameraLib/dist/Debug/GNU-Linux/libcameralib.a ../RaspiCam/Lib/libraspicam.so -Wl,-rpath,'../Utils/dist/Debug/GNU-Linux' -L../Utils/dist/Debug/GNU-Linux -lUtils
+LDLIBSOPTIONS=-lpthread -Wl,-rpath,'../ComLib/dist/Debug/GNU-Linux' -L../ComLib/dist/Debug/GNU-Linux -lComLib ../DataLib/dist/Debug/GNU-Linux/libdatalib.a ../CameraLib/dist/Debug/GNU-Linux/libcameralib.a ../RaspiCam/Lib/libraspicam.so -Wl,-rpath,'../UtilsLib/dist/Debug/GNU-Linux' -L../UtilsLib/dist/Debug/GNU-Linux -lUtilsLib
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -66,7 +66,7 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/server: ../CameraLib/dist/Debug/GNU-L
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/server: ../RaspiCam/Lib/libraspicam.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/server: ../Utils/dist/Debug/GNU-Linux/libUtils.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/server: ../UtilsLib/dist/Debug/GNU-Linux/libUtilsLib.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/server: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -75,19 +75,19 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/server: ${OBJECTFILES}
 ${OBJECTDIR}/Server.o: Server.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../ComLib/Inc -I../DataLib/Inc -I../Utils/Inc -I../CameraLib/Inc -I../RaspiCam/Inc -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server.o Server.cpp
+	$(COMPILE.cc) -g -I../ComLib/Inc -I../DataLib/Inc -I../CameraLib/Inc -I../RaspiCam/Inc -I../UtilsLib/Inc -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server.o Server.cpp
 
 # Subprojects
 .build-subprojects:
 	cd ../ComLib && ${MAKE}  -f Makefile CONF=Debug
 	cd ../DataLib && ${MAKE}  -f Makefile CONF=Debug
 	cd ../CameraLib && ${MAKE}  -f Makefile CONF=Debug
-	cd ../Utils && ${MAKE}  -f Makefile CONF=Debug
+	cd ../UtilsLib && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} -r ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libComLib.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libraspicam.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libUtils.so
+	${RM} -r ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libComLib.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libraspicam.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libUtilsLib.so
 	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/server
 
 # Subprojects
@@ -95,7 +95,7 @@ ${OBJECTDIR}/Server.o: Server.cpp
 	cd ../ComLib && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../DataLib && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../CameraLib && ${MAKE}  -f Makefile CONF=Debug clean
-	cd ../Utils && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../UtilsLib && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

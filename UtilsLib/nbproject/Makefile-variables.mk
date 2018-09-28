@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
-CND_ARTIFACT_NAME_Debug=libUtils.so
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/libUtils.so
+CND_ARTIFACT_NAME_Debug=libUtilsLib.so
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/libUtilsLib.so
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
-CND_PACKAGE_NAME_Debug=libUtils.so.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/libUtils.so.tar
+CND_PACKAGE_NAME_Debug=libUtilsLib.so.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/libUtilsLib.so.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
-CND_ARTIFACT_NAME_Release=libUtils.so
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/libUtils.so
+CND_ARTIFACT_NAME_Release=libUtilsLib.so
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/libUtilsLib.so
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
-CND_PACKAGE_NAME_Release=libUtils.so.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/libUtils.so.tar
+CND_PACKAGE_NAME_Release=libUtilsLib.so.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/libUtilsLib.so.tar
 #
 # include compiler specific variables
 #

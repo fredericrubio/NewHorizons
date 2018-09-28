@@ -22,7 +22,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		B5003D83215D742A007DC6C7 /* NHO_LOG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5003D82215D742A007DC6C7 /* NHO_LOG.cpp */; };
 		B5003D84215D744D007DC6C7 /* libDataLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5366E4B213AF91E0040903A /* libDataLib.a */; };
 		B5003D8E215D7467007DC6C7 /* libDataLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5366E4B213AF91E0040903A /* libDataLib.a */; };
 		B5366DF521399FB10040903A /* Cllient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5366DF421399FB10040903A /* Cllient.cpp */; };
@@ -113,8 +112,6 @@
 
 /* Begin PBXFileReference section */
 		B5003D75214EB1A4007DC6C7 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		B5003D81215D741E007DC6C7 /* NHO_LOG.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = NHO_LOG.hpp; path = UtilsLib/Inc/NHO_LOG.hpp; sourceTree = SOURCE_ROOT; };
-		B5003D82215D742A007DC6C7 /* NHO_LOG.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NHO_LOG.cpp; path = UtilsLib/Src/NHO_LOG.cpp; sourceTree = SOURCE_ROOT; };
 		B5003D9A215EBC3F007DC6C7 /* libUtilsLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUtilsLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5366DF221399FB10040903A /* Client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Client; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5366DF421399FB10040903A /* Cllient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Cllient.cpp; sourceTree = "<group>"; };
@@ -181,27 +178,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B5003DA2215EBD6B007DC6C7 /* UtilsLib */ = {
+		B5003DB1215EC57D007DC6C7 /* UtilsLib */ = {
 			isa = PBXGroup;
 			children = (
-				B5003DAF215EC03E007DC6C7 /* Inc */,
-				B5003DB0215EC045007DC6C7 /* Src */,
+				B5003DB2215EC58D007DC6C7 /* Inc */,
+				B5003DB3215EC592007DC6C7 /* Src */,
 			);
-			path = UtilsLib;
+			name = UtilsLib;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
-		B5003DAF215EC03E007DC6C7 /* Inc */ = {
+		B5003DB2215EC58D007DC6C7 /* Inc */ = {
 			isa = PBXGroup;
 			children = (
-				B5003D81215D741E007DC6C7 /* NHO_LOG.hpp */,
 			);
 			path = Inc;
 			sourceTree = "<group>";
 		};
-		B5003DB0215EC045007DC6C7 /* Src */ = {
+		B5003DB3215EC592007DC6C7 /* Src */ = {
 			isa = PBXGroup;
 			children = (
-				B5003D82215D742A007DC6C7 /* NHO_LOG.cpp */,
 			);
 			path = Src;
 			sourceTree = "<group>";
@@ -209,7 +205,7 @@
 		B5366DC821399E960040903A = {
 			isa = PBXGroup;
 			children = (
-				B5003DA2215EBD6B007DC6C7 /* UtilsLib */,
+				B5003DB1215EC57D007DC6C7 /* UtilsLib */,
 				B5003D75214EB1A4007DC6C7 /* .gitignore */,
 				B5366E4F213AF92F0040903A /* DataLib */,
 				B5366E2F213AE41D0040903A /* ComLib */,
@@ -507,7 +503,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5003D83215D742A007DC6C7 /* NHO_LOG.cpp in Sources */,
 				B5366DF521399FB10040903A /* Cllient.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

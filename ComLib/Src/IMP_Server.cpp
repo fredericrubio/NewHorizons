@@ -34,6 +34,8 @@ infoPort(pInfoPort), dataPort(pDataPort),  infoConnexionSocket(0), dataConnexion
  
 #ifdef MAC_OS
     camera.open();
+    
+    // wait  for initialization 
     std::this_thread::sleep_for (std::chrono::seconds(4));
 #endif
 }
@@ -142,6 +144,8 @@ void IMP_Server::captureImage() {
         }
         NHO_FILE_LOG(logDEBUG) << "IMP_Server::captureImage: " << lElapsedTime << std::endl;      
         
+        sendImage(image);
+
         std::this_thread::sleep_for (std::chrono::milliseconds(period - lElapsedTime));
     }
     while(1);
