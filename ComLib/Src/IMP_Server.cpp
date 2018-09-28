@@ -32,9 +32,10 @@ infoPort(pInfoPort), dataPort(pDataPort),  infoConnexionSocket(0), dataConnexion
     
     image = new IMP_Image();
  
+#ifdef MAC_OS
     camera.open();
     std::this_thread::sleep_for (std::chrono::seconds(4));
- 
+#endif
 }
 
 bool IMP_Server::initiate() {
@@ -77,7 +78,9 @@ bool IMP_Server::initiate() {
     serviceConnectionThread = new std::thread(&IMP_Server::waitForConnectionOnServiceSocket, std::ref(*this));
     /// data channel
     dataConnectionThread = new std::thread(&IMP_Server::waitForConnectionOnDataSocket, std::ref(*this));
+#ifdef MAC_OS
     imageCaptureThread = new std::thread(&IMP_Server::captureImage, std::ref(*this));
+#endif
     
 #ifdef _DEBUG
     std::cout << "IMP_Server::initiate End\n";
@@ -108,7 +111,7 @@ bool IMP_Server::terminate() {
 // Method called by the thread capturging the images.
 // Only one image is available: the latest captured.
 void IMP_Server::captureImage() {
-
+#ifdef MAC_OS
     unsigned char*  lPixels;
     unsigned int    lSize;
     std::chrono::time_point<std::chrono::steady_clock> start_time;
@@ -142,7 +145,7 @@ void IMP_Server::captureImage() {
         std::this_thread::sleep_for (std::chrono::milliseconds(period - lElapsedTime));
     }
     while(1);
-    
+#endif
 }
 
 ///////////////////////////

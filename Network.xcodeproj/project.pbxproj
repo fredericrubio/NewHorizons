@@ -22,6 +22,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		B5003D83215D742A007DC6C7 /* NHO_LOG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5003D82215D742A007DC6C7 /* NHO_LOG.cpp */; };
+		B5003D84215D744D007DC6C7 /* libDataLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5366E4B213AF91E0040903A /* libDataLib.a */; };
+		B5003D8E215D7467007DC6C7 /* libDataLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5366E4B213AF91E0040903A /* libDataLib.a */; };
 		B5366DF521399FB10040903A /* Cllient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5366DF421399FB10040903A /* Cllient.cpp */; };
 		B5366E0B2139A0EE0040903A /* Server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5366E0A2139A0EE0040903A /* Server.cpp */; };
 		B5366E54213AFAF20040903A /* IMP_Image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5366E52213AFAF20040903A /* IMP_Image.cpp */; };
@@ -43,6 +46,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		B5003D86215D7455007DC6C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5366DC921399E960040903A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5366E4A213AF91E0040903A;
+			remoteInfo = DataLib;
+		};
+		B5003D8A215D7462007DC6C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5366DC921399E960040903A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5366E4A213AF91E0040903A;
+			remoteInfo = DataLib;
+		};
 		B5366E232139A44C0040903A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B5366DC921399E960040903A /* Project object */;
@@ -96,6 +113,9 @@
 
 /* Begin PBXFileReference section */
 		B5003D75214EB1A4007DC6C7 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		B5003D81215D741E007DC6C7 /* NHO_LOG.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = NHO_LOG.hpp; path = UtilsLib/Inc/NHO_LOG.hpp; sourceTree = SOURCE_ROOT; };
+		B5003D82215D742A007DC6C7 /* NHO_LOG.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NHO_LOG.cpp; path = UtilsLib/Src/NHO_LOG.cpp; sourceTree = SOURCE_ROOT; };
+		B5003D9A215EBC3F007DC6C7 /* libUtilsLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUtilsLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5366DF221399FB10040903A /* Client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Client; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5366DF421399FB10040903A /* Cllient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Cllient.cpp; sourceTree = "<group>"; };
 		B5366E082139A0EE0040903A /* Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Server; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,10 +139,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B5003D97215EBC3F007DC6C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B5366DEF21399FB10040903A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5003D8E215D7467007DC6C7 /* libDataLib.a in Frameworks */,
 				B5AA3F662140646A002BCC34 /* libComLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5003D84215D744D007DC6C7 /* libDataLib.a in Frameworks */,
 				B5AA3F6D21456B7E002BCC34 /* libComLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,9 +181,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B5003DA2215EBD6B007DC6C7 /* UtilsLib */ = {
+			isa = PBXGroup;
+			children = (
+				B5003DAF215EC03E007DC6C7 /* Inc */,
+				B5003DB0215EC045007DC6C7 /* Src */,
+			);
+			path = UtilsLib;
+			sourceTree = "<group>";
+		};
+		B5003DAF215EC03E007DC6C7 /* Inc */ = {
+			isa = PBXGroup;
+			children = (
+				B5003D81215D741E007DC6C7 /* NHO_LOG.hpp */,
+			);
+			path = Inc;
+			sourceTree = "<group>";
+		};
+		B5003DB0215EC045007DC6C7 /* Src */ = {
+			isa = PBXGroup;
+			children = (
+				B5003D82215D742A007DC6C7 /* NHO_LOG.cpp */,
+			);
+			path = Src;
+			sourceTree = "<group>";
+		};
 		B5366DC821399E960040903A = {
 			isa = PBXGroup;
 			children = (
+				B5003DA2215EBD6B007DC6C7 /* UtilsLib */,
 				B5003D75214EB1A4007DC6C7 /* .gitignore */,
 				B5366E4F213AF92F0040903A /* DataLib */,
 				B5366E2F213AE41D0040903A /* ComLib */,
@@ -172,6 +227,7 @@
 				B5366E082139A0EE0040903A /* Server */,
 				B5366E2B213AE4090040903A /* libComLib.a */,
 				B5366E4B213AF91E0040903A /* libDataLib.a */,
+				B5003D9A215EBC3F007DC6C7 /* libUtilsLib.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -262,6 +318,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		B5003D98215EBC3F007DC6C7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B5366E29213AE4090040903A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -286,6 +349,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		B5003D99215EBC3F007DC6C7 /* UtilsLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5003D9B215EBC3F007DC6C7 /* Build configuration list for PBXNativeTarget "UtilsLib" */;
+			buildPhases = (
+				B5003D96215EBC3F007DC6C7 /* Sources */,
+				B5003D97215EBC3F007DC6C7 /* Frameworks */,
+				B5003D98215EBC3F007DC6C7 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UtilsLib;
+			productName = UtilsLib;
+			productReference = B5003D9A215EBC3F007DC6C7 /* libUtilsLib.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		B5366DF121399FB10040903A /* Client */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B5366DF621399FB10040903A /* Build configuration list for PBXNativeTarget "Client" */;
@@ -297,6 +377,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B5003D8B215D7462007DC6C7 /* PBXTargetDependency */,
 				B5AA3F64214063B5002BCC34 /* PBXTargetDependency */,
 			);
 			name = Client;
@@ -315,6 +396,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B5003D87215D7455007DC6C7 /* PBXTargetDependency */,
 				B5AA3F6C21456B79002BCC34 /* PBXTargetDependency */,
 			);
 			name = Server;
@@ -365,6 +447,10 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Frédéric Rubio";
 				TargetAttributes = {
+					B5003D99215EBC3F007DC6C7 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 					B5366DF121399FB10040903A = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -404,15 +490,24 @@
 				B5366E1F2139A4460040903A /* ALL */,
 				B5366E2A213AE4090040903A /* ComLib */,
 				B5366E4A213AF91E0040903A /* DataLib */,
+				B5003D99215EBC3F007DC6C7 /* UtilsLib */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B5003D96215EBC3F007DC6C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B5366DEE21399FB10040903A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5003D83215D742A007DC6C7 /* NHO_LOG.cpp in Sources */,
 				B5366DF521399FB10040903A /* Cllient.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,6 +544,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		B5003D87215D7455007DC6C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5366E4A213AF91E0040903A /* DataLib */;
+			targetProxy = B5003D86215D7455007DC6C7 /* PBXContainerItemProxy */;
+		};
+		B5003D8B215D7462007DC6C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5366E4A213AF91E0040903A /* DataLib */;
+			targetProxy = B5003D8A215D7462007DC6C7 /* PBXContainerItemProxy */;
+		};
 		B5366E242139A44C0040903A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B5366DF121399FB10040903A /* Client */;
@@ -472,6 +577,24 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		B5003D9C215EBC3F007DC6C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B5003D9D215EBC3F007DC6C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		B5366DD621399E960040903A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -673,6 +796,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B5003D9B215EBC3F007DC6C7 /* Build configuration list for PBXNativeTarget "UtilsLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5003D9C215EBC3F007DC6C7 /* Debug */,
+				B5003D9D215EBC3F007DC6C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B5366DCC21399E960040903A /* Build configuration list for PBXProject "Network" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
