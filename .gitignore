@@ -14,6 +14,9 @@
 *.gch
 *.pch
 
+# Raspbian Section
+libraspicam.so.0.1
+
 # NetBeans Section
 Server/dist/
 
@@ -52,6 +55,8 @@ DerivedData/
 /CameraLib/build/
 /CameraLib/dist/
 /CameraLib/.dep.inc
-/Utils/build/
-/Utils/dist/
-/Utils/.dep.inc
+/UtilsLib/build/
+/UtilsLib/dist/
+/UtilsLib/.dep.inc
+/UtilsLib/build/
+/UtilsLib/dist/
