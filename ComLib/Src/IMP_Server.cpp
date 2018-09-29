@@ -32,7 +32,7 @@ infoPort(pInfoPort), dataPort(pDataPort),  infoConnexionSocket(0), dataConnexion
     
     image = new IMP_Image();
  
-#ifdef MAC_OS
+#ifdef _RASPBIAN
     camera.open();
     
     // wait  for initialization 
@@ -80,7 +80,7 @@ bool IMP_Server::initiate() {
     serviceConnectionThread = new std::thread(&IMP_Server::waitForConnectionOnServiceSocket, std::ref(*this));
     /// data channel
     dataConnectionThread = new std::thread(&IMP_Server::waitForConnectionOnDataSocket, std::ref(*this));
-#ifdef MAC_OS
+#ifdef _RASPBIAN
     imageCaptureThread = new std::thread(&IMP_Server::captureImage, std::ref(*this));
 #endif
     
@@ -113,13 +113,12 @@ bool IMP_Server::terminate() {
 // Method called by the thread capturging the images.
 // Only one image is available: the latest captured.
 void IMP_Server::captureImage() {
-#ifdef MAC_OS
+#ifdef _RASPBIAN
     unsigned char*  lPixels;
     unsigned int    lSize;
     std::chrono::time_point<std::chrono::steady_clock> start_time;
     std::chrono::time_point<std::chrono::steady_clock> end_time;
     std::chrono::system_clock::duration duration;
-    clock_t t1, t2;
     unsigned int lElapsedTime = 0;
     
     // check whether the camera is opened or not

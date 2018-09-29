@@ -52,8 +52,11 @@
             <pElem>../DataLib/Inc</pElem>
             <pElem>../CameraLib/Inc</pElem>
             <pElem>../RaspiCam/Inc</pElem>
-            <pElem>../Utils/Inc</pElem>
+            <pElem>../UtilsLib/Inc</pElem>
           </incDir>
+          <preprocessorList>
+            <Elem>_RASPBIAN</Elem>
+          </preprocessorList>
         </ccTool>
       </compileType>
       <item path="Inc/IMP_AckMessageBody.hpp" ex="false" tool="3" flavor2="0">

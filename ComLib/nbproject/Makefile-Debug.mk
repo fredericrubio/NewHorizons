@@ -70,32 +70,32 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libComLib.${CND_DLIB_EXT}: ${OBJECTFI
 ${OBJECTDIR}/Src/IMP_Client.o: Src/IMP_Client.cpp
 	${MKDIR} -p ${OBJECTDIR}/Src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -IInc -I../DataLib/Inc -I../CameraLib/Inc -I../RaspiCam/Inc -I../Utils/Inc -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/IMP_Client.o Src/IMP_Client.cpp
+	$(COMPILE.cc) -g -D_RASPBIAN -IInc -I../DataLib/Inc -I../CameraLib/Inc -I../RaspiCam/Inc -I../UtilsLib/Inc -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/IMP_Client.o Src/IMP_Client.cpp
 
 ${OBJECTDIR}/Src/IMP_ImageSizeMessageBody.o: Src/IMP_ImageSizeMessageBody.cpp
 	${MKDIR} -p ${OBJECTDIR}/Src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -IInc -I../DataLib/Inc -I../CameraLib/Inc -I../RaspiCam/Inc -I../Utils/Inc -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/IMP_ImageSizeMessageBody.o Src/IMP_ImageSizeMessageBody.cpp
+	$(COMPILE.cc) -g -D_RASPBIAN -IInc -I../DataLib/Inc -I../CameraLib/Inc -I../RaspiCam/Inc -I../UtilsLib/Inc -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/IMP_ImageSizeMessageBody.o Src/IMP_ImageSizeMessageBody.cpp
 
 ${OBJECTDIR}/Src/IMP_Message.o: Src/IMP_Message.cpp
 	${MKDIR} -p ${OBJECTDIR}/Src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -IInc -I../DataLib/Inc -I../CameraLib/Inc -I../RaspiCam/Inc -I../Utils/Inc -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/IMP_Message.o Src/IMP_Message.cpp
+	$(COMPILE.cc) -g -D_RASPBIAN -IInc -I../DataLib/Inc -I../CameraLib/Inc -I../RaspiCam/Inc -I../UtilsLib/Inc -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/IMP_Message.o Src/IMP_Message.cpp
 
 ${OBJECTDIR}/Src/IMP_MessageBody.o: Src/IMP_MessageBody.cpp
 	${MKDIR} -p ${OBJECTDIR}/Src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -IInc -I../DataLib/Inc -I../CameraLib/Inc -I../RaspiCam/Inc -I../Utils/Inc -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/IMP_MessageBody.o Src/IMP_MessageBody.cpp
+	$(COMPILE.cc) -g -D_RASPBIAN -IInc -I../DataLib/Inc -I../CameraLib/Inc -I../RaspiCam/Inc -I../UtilsLib/Inc -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/IMP_MessageBody.o Src/IMP_MessageBody.cpp
 
 ${OBJECTDIR}/Src/IMP_Server.o: Src/IMP_Server.cpp
 	${MKDIR} -p ${OBJECTDIR}/Src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -IInc -I../DataLib/Inc -I../CameraLib/Inc -I../RaspiCam/Inc -I../Utils/Inc -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/IMP_Server.o Src/IMP_Server.cpp
+	$(COMPILE.cc) -g -D_RASPBIAN -IInc -I../DataLib/Inc -I../CameraLib/Inc -I../RaspiCam/Inc -I../UtilsLib/Inc -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/IMP_Server.o Src/IMP_Server.cpp
 
 ${OBJECTDIR}/Src/IMP_ackMessageBody.o: Src/IMP_ackMessageBody.cpp
 	${MKDIR} -p ${OBJECTDIR}/Src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -IInc -I../DataLib/Inc -I../CameraLib/Inc -I../RaspiCam/Inc -I../Utils/Inc -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/IMP_ackMessageBody.o Src/IMP_ackMessageBody.cpp
+	$(COMPILE.cc) -g -D_RASPBIAN -IInc -I../DataLib/Inc -I../CameraLib/Inc -I../RaspiCam/Inc -I../UtilsLib/Inc -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/IMP_ackMessageBody.o Src/IMP_ackMessageBody.cpp
 
 # Subprojects
 .build-subprojects:
