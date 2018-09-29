@@ -65,7 +65,7 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libUtilsLib.${CND_DLIB_EXT}: ${OBJECT
 ${OBJECTDIR}/Src/NHO_LOG.o: Src/NHO_LOG.cpp
 	${MKDIR} -p ${OBJECTDIR}/Src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -IInc -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/NHO_LOG.o Src/NHO_LOG.cpp
+	$(COMPILE.cc) -g -D_RASPBIAN -IInc -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/NHO_LOG.o Src/NHO_LOG.cpp
 
 # Subprojects
 .build-subprojects:

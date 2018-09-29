@@ -67,7 +67,7 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libcameralib.a: ${OBJECTFILES}
 ${OBJECTDIR}/Src/IMP_Camera.o: Src/IMP_Camera.cpp
 	${MKDIR} -p ${OBJECTDIR}/Src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -IInc -I../RaspiCam/Inc -I../UtilsLib/Inc -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/IMP_Camera.o Src/IMP_Camera.cpp
+	$(COMPILE.cc) -g -D_RASPBIAN -IInc -I../RaspiCam/Inc -I../UtilsLib/Inc -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/IMP_Camera.o Src/IMP_Camera.cpp
 
 # Subprojects
 .build-subprojects:

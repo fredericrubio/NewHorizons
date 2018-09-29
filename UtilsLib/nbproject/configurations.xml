@@ -40,6 +40,9 @@
           <incDir>
             <pElem>Inc</pElem>
           </incDir>
+          <preprocessorList>
+            <Elem>_RASPBIAN</Elem>
+          </preprocessorList>
         </ccTool>
       </compileType>
       <item path="Inc/NHO_LOG.hpp" ex="false" tool="3" flavor2="0">

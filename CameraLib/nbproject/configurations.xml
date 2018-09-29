@@ -42,6 +42,9 @@
             <pElem>../RaspiCam/Inc</pElem>
             <pElem>../UtilsLib/Inc</pElem>
           </incDir>
+          <preprocessorList>
+            <Elem>_RASPBIAN</Elem>
+          </preprocessorList>
         </ccTool>
         <archiverTool>
         </archiverTool>

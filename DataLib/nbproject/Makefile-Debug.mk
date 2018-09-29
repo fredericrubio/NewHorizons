@@ -67,7 +67,7 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdatalib.a: ${OBJECTFILES}
 ${OBJECTDIR}/Src/IMP_Image.o: Src/IMP_Image.cpp
 	${MKDIR} -p ${OBJECTDIR}/Src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -IInc -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/IMP_Image.o Src/IMP_Image.cpp
+	$(COMPILE.cc) -g -D_RASPBIAN -IInc -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/IMP_Image.o Src/IMP_Image.cpp
 
 # Subprojects
 .build-subprojects:

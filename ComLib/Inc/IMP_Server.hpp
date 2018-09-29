@@ -14,7 +14,7 @@
 #include <mutex>
 
 #include "IMP_Image.hpp"
-#ifdef MAC_OS
+#ifdef _RASPBIAN
 #include "IMP_Camera.hpp"
 #endif
 class IMP_Server {
@@ -56,7 +56,7 @@ protected:
     std::thread* dataConnectionThread;
 
     // Image Section
-#ifdef MAC_OS
+#ifdef _RASPBIAN
     /// Capture Thread
     std::thread* imageCaptureThread;
 #endif
@@ -66,7 +66,7 @@ protected:
     std::mutex imageMutex;
     /// time elapsed betwween to capture (ms)
     unsigned short period; 
-#ifdef MAC_OS
+#ifdef _RASPBIAN
     IMP_Camera camera;
 #endif
 };
