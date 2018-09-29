@@ -24,6 +24,8 @@
 /* Begin PBXBuildFile section */
 		B5003D84215D744D007DC6C7 /* libDataLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5366E4B213AF91E0040903A /* libDataLib.a */; };
 		B5003D8E215D7467007DC6C7 /* libDataLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5366E4B213AF91E0040903A /* libDataLib.a */; };
+		B5003DB6215EC9E0007DC6C7 /* NHO_Log.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B5003DB5215EC9E0007DC6C7 /* NHO_Log.hpp */; };
+		B5003DB8215ECA00007DC6C7 /* NHO_Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5003DB7215ECA00007DC6C7 /* NHO_Log.cpp */; };
 		B5366DF521399FB10040903A /* Cllient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5366DF421399FB10040903A /* Cllient.cpp */; };
 		B5366E0B2139A0EE0040903A /* Server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5366E0A2139A0EE0040903A /* Server.cpp */; };
 		B5366E54213AFAF20040903A /* IMP_Image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5366E52213AFAF20040903A /* IMP_Image.cpp */; };
@@ -113,6 +115,8 @@
 /* Begin PBXFileReference section */
 		B5003D75214EB1A4007DC6C7 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		B5003D9A215EBC3F007DC6C7 /* libUtilsLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUtilsLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5003DB5215EC9E0007DC6C7 /* NHO_Log.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = NHO_Log.hpp; path = UtilsLib/Inc/NHO_Log.hpp; sourceTree = SOURCE_ROOT; };
+		B5003DB7215ECA00007DC6C7 /* NHO_Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NHO_Log.cpp; path = UtilsLib/Src/NHO_Log.cpp; sourceTree = SOURCE_ROOT; };
 		B5366DF221399FB10040903A /* Client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Client; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5366DF421399FB10040903A /* Cllient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Cllient.cpp; sourceTree = "<group>"; };
 		B5366E082139A0EE0040903A /* Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Server; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,6 +195,7 @@
 		B5003DB2215EC58D007DC6C7 /* Inc */ = {
 			isa = PBXGroup;
 			children = (
+				B5003DB5215EC9E0007DC6C7 /* NHO_Log.hpp */,
 			);
 			path = Inc;
 			sourceTree = "<group>";
@@ -198,6 +203,7 @@
 		B5003DB3215EC592007DC6C7 /* Src */ = {
 			isa = PBXGroup;
 			children = (
+				B5003DB7215ECA00007DC6C7 /* NHO_Log.cpp */,
 			);
 			path = Src;
 			sourceTree = "<group>";
@@ -318,6 +324,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5003DB6215EC9E0007DC6C7 /* NHO_Log.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +503,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5003DB8215ECA00007DC6C7 /* NHO_Log.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
