@@ -12,7 +12,7 @@
 
 int main(int argc, char *argv[])
 {
-#ifdef MAC_OS
+#ifdef _RASPBIAN
     IMP_Client* client = new IMP_Client("localhost", 51717, 51718);
 #else
     IMP_Client* client = new IMP_Client("192.168.0.22", 51717, 51718);
@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     unsigned int microseconds = 10000000;
     while(1) {
         usleep(microseconds);
-        std::cout << "Client running < " << clock() << ">\n";
+//        std::cout << "Client running < " << clock() << ">\n";
     }
     
     client->terminate();

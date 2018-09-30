@@ -59,7 +59,7 @@ bool IMP_ImageSizeMessageBody::unserialize(const char * const pSerializedArray) 
     
 }
 
-size_t IMP_ImageSizeMessageBody::getSize() {
+unsigned int IMP_ImageSizeMessageBody::getSize() {
     
     return sizeof(unsigned int) * 4;
     

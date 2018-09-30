@@ -17,18 +17,18 @@ class IMP_AckMessageBody : public IMP_MessageBody {
     
     public :
     IMP_AckMessageBody() {};
-    IMP_AckMessageBody(const size_t pSize):status(pSize) {};
+    IMP_AckMessageBody(const unsigned int pSize):status(pSize) {};
     
     bool serialize(char * const);
     
     bool unserialize(const char *const);
     
-    virtual size_t getSize();
+    virtual unsigned int getSize();
     
-    size_t getStatus() {return status;};
+    unsigned int getBodyMessage() {return status;};
     
     protected :
-    size_t status;
+    unsigned int status;
 };
 
 #endif /* IMP_ackMessageBody_hpp */

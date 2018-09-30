@@ -29,14 +29,14 @@ class IMP_Message {
      **/
     ~IMP_Message();
     
-    size_t serialize(char **);
+    unsigned int serialize(char **);
 
     bool unserialize(const char *);
 
     const IMP_MessageBody* getBody() {return body;};
 
-    virtual size_t getSize() {
-        size_t lSize = sizeof(type) + sizeof(date);;
+    virtual unsigned int getSize() {
+        unsigned int lSize = sizeof(type) + sizeof(date);;
         if (body != NULL) {
             lSize += body->getSize();
         }

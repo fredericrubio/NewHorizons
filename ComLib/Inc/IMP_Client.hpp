@@ -30,7 +30,7 @@ class IMP_Client {
     
     bool receiveInfoMessage();
     
-    bool receiveDataMessage();
+    bool receiveImageMessage();
 
     bool sendMessage(const size_t pSize, const char* const pMessage);
 
