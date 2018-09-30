@@ -12,7 +12,7 @@
 IMP_Camera::IMP_Camera() {
     
     raspCam = new raspicam::RaspiCam();
-    
+    raspCam->setFormat(raspicam::RASPICAM_FORMAT_RGB);
 }
 
 IMP_Camera::~IMP_Camera() {
@@ -95,10 +95,12 @@ unsigned char* IMP_Camera::getImage(unsigned int* const pSize) {
     unsigned char* lData = NULL;
     // get the image
     *pSize = raspCam->getImageTypeSize( raspicam::RASPICAM_FORMAT_RGB );
-    lData = new unsigned char[*pSize];
-    
-    //extract the image in rgb format
-    raspCam->retrieve(lData, raspicam::RASPICAM_FORMAT_RGB );
+    if (*pSize > 0) {
+        lData = new unsigned char[*pSize];
+
+        //extract the image in rgb format
+        raspCam->retrieve(lData, raspicam::RASPICAM_FORMAT_IGNORE );
+    }
 
     return lData;
     

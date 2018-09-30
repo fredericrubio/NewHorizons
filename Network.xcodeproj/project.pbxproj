@@ -13,9 +13,6 @@
 			buildPhases = (
 			);
 			dependencies = (
-				B5003DBA215F99B1007DC6C7 /* PBXTargetDependency */,
-				B5003DBC215F99B1007DC6C7 /* PBXTargetDependency */,
-				B5003DBE215F99B1007DC6C7 /* PBXTargetDependency */,
 				B5366E242139A44C0040903A /* PBXTargetDependency */,
 				B5366E262139A44C0040903A /* PBXTargetDependency */,
 			);
@@ -27,9 +24,6 @@
 /* Begin PBXBuildFile section */
 		B5003D84215D744D007DC6C7 /* libDataLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5366E4B213AF91E0040903A /* libDataLib.a */; };
 		B5003D8E215D7467007DC6C7 /* libDataLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5366E4B213AF91E0040903A /* libDataLib.a */; };
-		B5003DB6215EC9E0007DC6C7 /* NHO_Log.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B5003DB5215EC9E0007DC6C7 /* NHO_Log.hpp */; };
-		B5003DB8215ECA00007DC6C7 /* NHO_Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5003DB7215ECA00007DC6C7 /* NHO_Log.cpp */; };
-		B5003DC1215F99D7007DC6C7 /* libUtilsLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5003D9A215EBC3F007DC6C7 /* libUtilsLib.a */; };
 		B5366DF521399FB10040903A /* Cllient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5366DF421399FB10040903A /* Cllient.cpp */; };
 		B5366E0B2139A0EE0040903A /* Server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5366E0A2139A0EE0040903A /* Server.cpp */; };
 		B5366E54213AFAF20040903A /* IMP_Image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5366E52213AFAF20040903A /* IMP_Image.cpp */; };
@@ -48,6 +42,7 @@
 		B5AA3F712145B3F7002BCC34 /* IMP_Client.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B5AA3F6F2145B3F7002BCC34 /* IMP_Client.hpp */; };
 		B5AA3F7821485BD2002BCC34 /* IMP_AckMessageBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5AA3F7621485BD2002BCC34 /* IMP_AckMessageBody.cpp */; };
 		B5AA3F7921485BD2002BCC34 /* IMP_AckMessageBody.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B5AA3F7721485BD2002BCC34 /* IMP_AckMessageBody.hpp */; };
+		B5CCEAB321613480003F64AE /* NHO_Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5CCEAB221613480003F64AE /* NHO_Log.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,34 +59,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = B5366E4A213AF91E0040903A;
 			remoteInfo = DataLib;
-		};
-		B5003DB9215F99B1007DC6C7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B5366DC921399E960040903A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B5366E2A213AE4090040903A;
-			remoteInfo = ComLib;
-		};
-		B5003DBB215F99B1007DC6C7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B5366DC921399E960040903A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B5366E4A213AF91E0040903A;
-			remoteInfo = DataLib;
-		};
-		B5003DBD215F99B1007DC6C7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B5366DC921399E960040903A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B5003D99215EBC3F007DC6C7;
-			remoteInfo = UtilsLib;
-		};
-		B5003DBF215F99CD007DC6C7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B5366DC921399E960040903A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B5003D99215EBC3F007DC6C7;
-			remoteInfo = UtilsLib;
 		};
 		B5366E232139A44C0040903A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -147,8 +114,6 @@
 /* Begin PBXFileReference section */
 		B5003D75214EB1A4007DC6C7 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		B5003D9A215EBC3F007DC6C7 /* libUtilsLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUtilsLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B5003DB5215EC9E0007DC6C7 /* NHO_Log.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = NHO_Log.hpp; path = UtilsLib/Inc/NHO_Log.hpp; sourceTree = SOURCE_ROOT; };
-		B5003DB7215ECA00007DC6C7 /* NHO_Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NHO_Log.cpp; path = UtilsLib/Src/NHO_Log.cpp; sourceTree = SOURCE_ROOT; };
 		B5366DF221399FB10040903A /* Client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Client; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5366DF421399FB10040903A /* Cllient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Cllient.cpp; sourceTree = "<group>"; };
 		B5366E082139A0EE0040903A /* Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Server; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +134,8 @@
 		B5AA3F6F2145B3F7002BCC34 /* IMP_Client.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IMP_Client.hpp; sourceTree = "<group>"; };
 		B5AA3F7621485BD2002BCC34 /* IMP_AckMessageBody.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IMP_AckMessageBody.cpp; sourceTree = "<group>"; };
 		B5AA3F7721485BD2002BCC34 /* IMP_AckMessageBody.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IMP_AckMessageBody.hpp; sourceTree = "<group>"; };
+		B5CCEAB121613476003F64AE /* NHO_Log.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = NHO_Log.hpp; path = UtilsLib/Inc/NHO_Log.hpp; sourceTree = SOURCE_ROOT; };
+		B5CCEAB221613480003F64AE /* NHO_Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NHO_Log.cpp; path = UtilsLib/Src/NHO_Log.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,7 +150,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5003DC1215F99D7007DC6C7 /* libUtilsLib.a in Frameworks */,
 				B5003D8E215D7467007DC6C7 /* libDataLib.a in Frameworks */,
 				B5AA3F662140646A002BCC34 /* libComLib.a in Frameworks */,
 			);
@@ -228,7 +194,7 @@
 		B5003DB2215EC58D007DC6C7 /* Inc */ = {
 			isa = PBXGroup;
 			children = (
-				B5003DB5215EC9E0007DC6C7 /* NHO_Log.hpp */,
+				B5CCEAB121613476003F64AE /* NHO_Log.hpp */,
 			);
 			path = Inc;
 			sourceTree = "<group>";
@@ -236,7 +202,7 @@
 		B5003DB3215EC592007DC6C7 /* Src */ = {
 			isa = PBXGroup;
 			children = (
-				B5003DB7215ECA00007DC6C7 /* NHO_Log.cpp */,
+				B5CCEAB221613480003F64AE /* NHO_Log.cpp */,
 			);
 			path = Src;
 			sourceTree = "<group>";
@@ -357,7 +323,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5003DB6215EC9E0007DC6C7 /* NHO_Log.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,7 +378,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				B5003DC0215F99CD007DC6C7 /* PBXTargetDependency */,
 				B5003D8B215D7462007DC6C7 /* PBXTargetDependency */,
 				B5AA3F64214063B5002BCC34 /* PBXTargetDependency */,
 			);
@@ -537,7 +501,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5003DB8215ECA00007DC6C7 /* NHO_Log.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +508,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5CCEAB321613480003F64AE /* NHO_Log.cpp in Sources */,
 				B5366DF521399FB10040903A /* Cllient.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -590,26 +554,6 @@
 			isa = PBXTargetDependency;
 			target = B5366E4A213AF91E0040903A /* DataLib */;
 			targetProxy = B5003D8A215D7462007DC6C7 /* PBXContainerItemProxy */;
-		};
-		B5003DBA215F99B1007DC6C7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B5366E2A213AE4090040903A /* ComLib */;
-			targetProxy = B5003DB9215F99B1007DC6C7 /* PBXContainerItemProxy */;
-		};
-		B5003DBC215F99B1007DC6C7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B5366E4A213AF91E0040903A /* DataLib */;
-			targetProxy = B5003DBB215F99B1007DC6C7 /* PBXContainerItemProxy */;
-		};
-		B5003DBE215F99B1007DC6C7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B5003D99215EBC3F007DC6C7 /* UtilsLib */;
-			targetProxy = B5003DBD215F99B1007DC6C7 /* PBXContainerItemProxy */;
-		};
-		B5003DC0215F99CD007DC6C7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B5003D99215EBC3F007DC6C7 /* UtilsLib */;
-			targetProxy = B5003DBF215F99CD007DC6C7 /* PBXContainerItemProxy */;
 		};
 		B5366E242139A44C0040903A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

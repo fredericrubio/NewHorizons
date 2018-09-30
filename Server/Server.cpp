@@ -24,7 +24,8 @@ void error(const char *msg)
 
 int main(int argc, char *argv[])
 {
-   
+    fprintf(stdout, "size: %u\n", sizeof(size_t));
+    
     NHO_FILELog::ReportingLevel() = NHO_FILELog::FromString("DEBUG");
 
     IMP_Server* server = new IMP_Server(51717, 51718);
@@ -35,7 +36,7 @@ int main(int argc, char *argv[])
     unsigned int microseconds = 10000000;
     while(1) {
         usleep(microseconds);
-        std::cout << "Server running < " << clock() << ">\n";
+//        std::cout << "Server running < " << clock() << ">\n";
     }
     
     server->terminate();
