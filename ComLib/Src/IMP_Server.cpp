@@ -17,7 +17,7 @@
 #include <mutex>
 
 #include "IMP_Server.hpp"
-#include "NHO_Log.hpp"
+#include "NHO_LOG.hpp"
 #include "IMP_Message.hpp"
 #include "IMP_ImageSizeMessageBody.hpp"
 #include "IMP_AckMessageBody.hpp"
