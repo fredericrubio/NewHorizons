@@ -23,12 +23,17 @@
 #include "IMP_AckMessageBody.hpp"
 #include "IMP_Image.hpp"
 
+
+#include <sys/ioctl.h>
+#include <netinet/tcp.h>
+
 #define _DEBUG
 
 IMP_Server::IMP_Server(const unsigned int pInfoPort, const unsigned int pDataPort):
-infoPort(pInfoPort), dataPort(pDataPort),  infoConnexionSocket(0), dataConnexionSocket(0) {
+infoPort(pInfoPort), dataPort(pDataPort),  infoConnexionSocket(0), dataConnexionSocket(0),
+dataClientSocket(0) {
 
-    period = 1000;
+    period = 2000;
     
     image = new IMP_Image();
  
@@ -75,6 +80,7 @@ bool IMP_Server::initiate() {
         std::cout << "IMP_Server: ERROR on binding " << std::endl;
         return(false);
     }
+    
     // launch the connexion thread
     /// service channel
     serviceConnectionThread = new std::thread(&IMP_Server::waitForConnectionOnServiceSocket, std::ref(*this));
@@ -118,21 +124,22 @@ void IMP_Server::captureImage() {
     unsigned int    lSize;
     std::chrono::time_point<std::chrono::steady_clock> start_time;
     std::chrono::time_point<std::chrono::steady_clock> end_time;
-    std::chrono::system_clock::duration duration;
     unsigned int lElapsedTime = 0;
-    
+
     // check whether the camera is opened or not
     
     do {
         start_time = std::chrono::steady_clock::now();
         if (camera.captureImage() == true) {
             lPixels = camera.getImage(&lSize);
-            image->setPixels(lSize, lPixels);
-            
-//            sendImage(image);
-              NHO_FILE_LOG(logDEBUG) << "IMP_Server::captureImage: " << camera.getWidth() << std::endl;      
-              NHO_FILE_LOG(logDEBUG) << "IMP_Server::captureImage: " << camera.getHeight() << std::endl;      
-              NHO_FILE_LOG(logDEBUG) << "IMP_Server::captureImage: " << image->getDataSize() << std::endl;      
+            if (lSize > 0) {
+                image->setPixels(lSize, lPixels);
+
+                sendImage(image);
+//              NHO_FILE_LOG(logDEBUG) << "IMP_Server::captureImage: " << camera.getWidth() << std::endl;      
+//              NHO_FILE_LOG(logDEBUG) << "IMP_Server::captureImage: " << camera.getHeight() << std::endl;      
+//              NHO_FILE_LOG(logDEBUG) << "IMP_Server::captureImage: " << image->getDataSize() << std::endl;      
+            }
             
             end_time = std::chrono::steady_clock::now();                        
             lElapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();            
@@ -141,11 +148,15 @@ void IMP_Server::captureImage() {
             lElapsedTime = 0;
             NHO_FILE_LOG(logDEBUG) << "IMP_Server::captureImage: No Capture" << std::endl;
         }
-        NHO_FILE_LOG(logDEBUG) << "IMP_Server::captureImage: " << lElapsedTime << std::endl;      
+//        NHO_FILE_LOG(logDEBUG) << "IMP_Server::captureImage: " << lElapsedTime << std::endl;      
         
-        sendImage(image);
-
-        std::this_thread::sleep_for (std::chrono::milliseconds(period - lElapsedTime));
+        if (lElapsedTime > period) {
+            NHO_FILE_LOG(logERROR) << "IMP_Server::captureImage: elapsed time greater than cycle" << std::endl;      
+            std::this_thread::sleep_for (std::chrono::milliseconds(period));
+        }
+        else {
+            std::this_thread::sleep_for (std::chrono::milliseconds(period - lElapsedTime));
+        }
     }
     while(1);
 #endif
@@ -154,41 +165,38 @@ void IMP_Server::captureImage() {
 ///////////////////////////
 // Send an image message.
 bool IMP_Server::sendImage(const IMP_Image* const pImage) {
-#ifdef _DEBUG
-    std::cout << "IMP_Server::sendImage \n";
-#endif
+
+    if (dataClientSocket <= 0) {
+        std::cout << "ERROR IMP_Server::sendImage no data socket" << std::endl;
+        return(false);
+    }
     // send message
     size_t lWrittenBytes = write(dataClientSocket, pImage->getPixels(), pImage->getDataSize());
     if (lWrittenBytes != pImage->getDataSize()) {
-        std::cout << "ERROR IMP_Server::sendImage" << std::endl;
+        std::cout << "ERROR IMP_Server::sendImage (number of written bytes:" <<
+                lWrittenBytes << "/" << pImage->getDataSize() << "))." << std::endl;
         return(false);
     }
     
     // wait for an answer
+    // Useless: the sent image is in chunks (STREAM SOCKETS)
     long lReceivedBytes;
-    IMP_AckMessageBody* lAckMsg = new IMP_AckMessageBody();
-    char* lBuffer = (char *) calloc(lAckMsg->getSize(), sizeof(char));
-    
-    lReceivedBytes = read(dataClientSocket, lBuffer, lAckMsg->getSize());
+    size_t  lBuffer;
+    lReceivedBytes = read(dataClientSocket, &lBuffer, sizeof(size_t));
+    // we can detect a problem in the transmission of the image
     if (lReceivedBytes < 0) {
-        std::cout << "ERROR IMP_Server::sendImage" << std::endl;
-        return(false);
+        std::cout << "ERROR IMP_Server::sendImage (number of read bytes) " << lReceivedBytes << std::endl;
     }
-    
-    // check the answer
-    lAckMsg->unserialize(lBuffer);
-    if (lAckMsg->getStatus() != pImage->getDataSize()) {
-        std::cout << "ERROR IMP_Server::sendImage <invalid ack status>" << std::endl;
-        return(false);
+    if (lReceivedBytes == sizeof(size_t)) {
+        // check the answer
+        if (lBuffer != pImage->getDataSize()) {
+            std::cout << "ERROR IMP_Server::sendImage: lost image (" <<
+                    lBuffer << "/" << pImage->getDataSize() << ")." << std::endl;
+        }
     }
-    
-    // memory management
-    if (lBuffer != NULL) {
-        delete lBuffer;
-    }
-#ifdef _DEBUG
-    std::cout << "IMP_Server::sendImage End" << std::endl;
-#endif
+ 
+    std::cout << "IMP_Server::sendImage done." << std::endl;
+ 
     return(true);
 }
 
@@ -214,6 +222,17 @@ bool IMP_Server::waitForConnectionOnDataSocket() {
             fprintf(stderr, "ERROR on accept");
             return(false);
         }
+        // Set the socket I/O mode: In this case FIONBIO
+        // enables or disables the blocking mode for the
+        // socket based on the numerical value of iMode.
+        // If iMode = 0, blocking is enabled;
+        // If iMode != 0, non-blocking mode is enabled.
+        int lMode = 0;
+        ioctl(dataClientSocket, FIONBIO, &lMode);
+
+        // an attempt to flush socket
+        int flag = 1;
+        setsockopt(dataClientSocket, IPPROTO_TCP, TCP_NODELAY, (char *) &flag, sizeof(int));
 #ifdef _DEBUG
         std::cout << "IMP_Server::waitForConnectionOnDataSocket another loop\n";
 #endif
@@ -271,15 +290,14 @@ void IMP_Server::sendServiceMessages(int pClientPort) {
 #ifdef _DEBUG
      std::cout << "IMP_Server::sendServiceMessages \n";
 #endif
-    usleep(100000);
     
     // set image size
     /// encode message
     // create and serialize message
     char*   lArray = NULL;
     IMP_Message* lMessage = new IMP_Message(clock(), IMP_Message::eImageSize);
-    ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->setWidth(123);
-    ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->setHeight(456);
+    ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->setWidth(camera.getWidth());
+    ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->setHeight(camera.getHeight());
     ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->setFormat(IMP_Image::FORMAT_RGB);
     lMessage->serialize(&lArray);
 
@@ -331,6 +349,9 @@ bool IMP_Server::sendServiceMessage(const int pClientSocket, const size_t pSize,
     }
     
     // memory management
+    if (lAckMsg != NULL) {
+        delete lAckMsg;
+    }
     if (lBuffer != NULL) {
         delete lBuffer;
     }
