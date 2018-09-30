@@ -8,7 +8,9 @@
 #include <unistd.h>
 #include <iostream>
 
+#ifdef _RASPBIAN
 #include <raspicam.h>
+#endif
 
 #include "IMP_Server.hpp"
 
