@@ -32,7 +32,7 @@ bool IMP_AckMessageBody::unserialize(const char * const pSerializedArray) {
     
 }
 
-size_t IMP_AckMessageBody::getSize() {
+unsigned int IMP_AckMessageBody::getSize() {
     
     return sizeof(size_t) ;
     
