@@ -94,7 +94,7 @@ bool IMP_Client::initiate() {
     
     infoThread = new std::thread(&IMP_Client::receiveInfoMessage, std::ref(*this));
 //    dataThread = new std::thread(&IMP_Client::receiveImageMessage, std::ref(*this));
-    
+    dataThread = NULL;
     return true;
 }
 
@@ -163,16 +163,15 @@ bool IMP_Client::receiveImageMessage() {
         else {
             image.setPixels(image.getDataSize(), lBuffer);
             std::cout << "IMP_Client::receiveImageMessage another image " << lNbBytes << std::endl;
-            std::string lFileName = std::to_string(clock()) + "_image.ppm";
+/*            std::string lFileName = std::to_string(clock()) + "_image.ppm";
             std::ofstream outFile ( lFileName ,std::ios::binary );
             outFile<<"P6\n" << image.getWidth() << " " << image.getHeight() << " 255\n";
             outFile.write ( ( char* ) image.getPixels(), image.getDataSize());
-            outFile.close();
+            outFile.close();*/
         }
         
         // send an aknownledgement
         IMP_AckMessageBody* lAckMsg = new IMP_AckMessageBody(lTotalOfBytes);
-//        unsigned int lMsg = lNbBytes;
         char* lMsgBuf = (char *) calloc(lAckMsg->getSize(), sizeof(char));
         lAckMsg->serialize(lMsgBuf);
         ssize_t lWrittenBytes = write(dataSocket, lMsgBuf, lAckMsg->getSize());
@@ -180,9 +179,6 @@ bool IMP_Client::receiveImageMessage() {
             std::cout << "ERROR IMP_Client::receiveImageMessage" << std::endl;
             return(false);
         }
-//        else {
-//            std::cout << "IMP_Client::receiveImageMessage return msg: " << lMsg << std::endl;
-//        }
     }
     
 #ifdef _DEBUG
@@ -220,19 +216,14 @@ bool IMP_Client::receiveInfoMessage() {
                 image.setHeight(((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->getHeight());
                 image.setFormat((IMP_Image::IMAGE_FORMAT) ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->getFormat());
                 
-                if (dataSocket > 0) {
+                if ((dataSocket > 0)
+                    &&
+                    (dataThread == NULL)) {
                     dataThread = new std::thread(&IMP_Client::receiveImageMessage, std::ref(*this));
                 }
 #ifdef _DEBUG
                 std::cout << "IMP_Client::receiveInfoMessage image initialized" << std::endl;
 #endif
-//                std::cout << "IMP_Client::receiveInfoMessage Image Size " <<
-//                    ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->getWidth()
-//                    << " " <<
-//                    ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->getHeight()
-//                    << " " <<
-//                    ((IMP_ImageSizeMessageBody*) (lMessage->getBody()))->getFormat()
-//                    << std::endl;
                 break;
                 
             default:

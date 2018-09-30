@@ -17,7 +17,7 @@ bool IMP_AckMessageBody::serialize(char* const pSerializedArray) {
     
     // copy values
     /// size
-    memcpy(pSerializedArray, &status, sizeof(size_t));
+    memcpy(pSerializedArray, &status, sizeof(unsigned int));
     
     return true;
 }
@@ -26,7 +26,7 @@ bool IMP_AckMessageBody::unserialize(const char * const pSerializedArray) {
     
     // copy values
     /// size
-    memcpy(&status, pSerializedArray, sizeof(size_t));
+    memcpy(&status, pSerializedArray, sizeof(unsigned int));
 
     return true;
     
@@ -34,6 +34,6 @@ bool IMP_AckMessageBody::unserialize(const char * const pSerializedArray) {
 
 unsigned int IMP_AckMessageBody::getSize() {
     
-    return sizeof(size_t) ;
+    return sizeof(unsigned int) ;
     
 }

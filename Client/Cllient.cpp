@@ -24,7 +24,6 @@ int main(int argc, char *argv[])
     unsigned int microseconds = 10000000;
     while(1) {
         usleep(microseconds);
-//        std::cout << "Client running < " << clock() << ">\n";
     }
     
     client->terminate();
