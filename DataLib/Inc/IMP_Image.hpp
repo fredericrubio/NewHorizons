@@ -41,8 +41,14 @@ class IMP_Image {
        
        void setWidth(const unsigned int pValue) {width = pValue;} ;
        void setHeight(const unsigned int pValue) {height = pValue;} ;
-       void setFormat(const IMAGE_FORMAT pValue) {format = pValue;} ;
-       void setPixels(const unsigned int pSize, unsigned char* const pPixels) {size = pSize;if (pixels != NULL) {free(pixels);}pixels = pPixels;} ;
+        void setFormat(const IMAGE_FORMAT pValue) {format = pValue; size = width * height * 3;} ;
+       void setPixels(const unsigned int pSize, unsigned char* const pPixels) {
+           size = pSize;
+/*           if (pixels != NULL) {
+               free(pixels);
+           }
+*/           pixels = pPixels;
+       } ;
        
     private :
         unsigned int width;

@@ -18,7 +18,7 @@ class IMP_MessageBody {
         
         virtual bool unserialize(const char * const) = 0;
 
-        virtual size_t getSize();
+        virtual unsigned int getSize();
     
 };
 

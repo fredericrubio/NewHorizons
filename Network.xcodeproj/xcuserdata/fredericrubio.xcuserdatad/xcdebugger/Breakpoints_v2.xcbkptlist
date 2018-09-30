@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ComLib/Src/IMP_Message.cpp"
-            timestampString = "559242302.975702"
+            timestampString = "559947435.832733"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "101"
@@ -22,16 +22,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ComLib/Src/IMP_ackMessageBody.cpp"
-            timestampString = "558472414.705817"
+            filePath = "ComLib/Src/IMP_Client.cpp"
+            timestampString = "559947435.833261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "IMP_AckMessageBody::unserialize(const char * const pSerializedArray)"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
+            landmarkName = "IMP_Client::receiveInfoMessage()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ComLib/Src/IMP_Client.cpp"
+            timestampString = "559947435.833549"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "IMP_Client::receiveInfoMessage()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ComLib/Src/IMP_ackMessageBody.cpp"
-            timestampString = "558472414.706032"
+            filePath = "ComLib/Src/IMP_Client.cpp"
+            timestampString = "559947435.83385"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "IMP_AckMessageBody::serialize(char* const pSerializedArray)"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "IMP_Client::receiveInfoMessage()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

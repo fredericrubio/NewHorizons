@@ -6,21 +6,29 @@
 	<dict>
 		<key>ALL.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
 		<key>Client.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
 		<key>ComLib.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
 		<key>DataLib.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
@@ -36,27 +44,26 @@
 		</dict>
 		<key>Server.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>Test.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>7</integer>
-		</dict>
-		<key>Utils.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
-		</dict>
 		<key>UtilsLib.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>B5003D99215EBC3F007DC6C7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B5366DF121399FB10040903A</key>
 		<dict>
 			<key>primary</key>
@@ -68,6 +75,16 @@
 			<true/>
 		</dict>
 		<key>B5366E1F2139A4460040903A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B5366E2A213AE4090040903A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B5366E4A213AF91E0040903A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

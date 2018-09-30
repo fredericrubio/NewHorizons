@@ -26,7 +26,7 @@ class IMP_ImageSizeMessageBody : public IMP_MessageBody {
 
     bool unserialize(const char *const);
 
-    virtual size_t getSize();
+    virtual unsigned int getSize();
     
     /**
      * Getters and setters

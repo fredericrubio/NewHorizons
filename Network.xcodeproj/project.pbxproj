@@ -13,6 +13,9 @@
 			buildPhases = (
 			);
 			dependencies = (
+				B5003DBA215F99B1007DC6C7 /* PBXTargetDependency */,
+				B5003DBC215F99B1007DC6C7 /* PBXTargetDependency */,
+				B5003DBE215F99B1007DC6C7 /* PBXTargetDependency */,
 				B5366E242139A44C0040903A /* PBXTargetDependency */,
 				B5366E262139A44C0040903A /* PBXTargetDependency */,
 			);
@@ -26,6 +29,7 @@
 		B5003D8E215D7467007DC6C7 /* libDataLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5366E4B213AF91E0040903A /* libDataLib.a */; };
 		B5003DB6215EC9E0007DC6C7 /* NHO_Log.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B5003DB5215EC9E0007DC6C7 /* NHO_Log.hpp */; };
 		B5003DB8215ECA00007DC6C7 /* NHO_Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5003DB7215ECA00007DC6C7 /* NHO_Log.cpp */; };
+		B5003DC1215F99D7007DC6C7 /* libUtilsLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5003D9A215EBC3F007DC6C7 /* libUtilsLib.a */; };
 		B5366DF521399FB10040903A /* Cllient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5366DF421399FB10040903A /* Cllient.cpp */; };
 		B5366E0B2139A0EE0040903A /* Server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5366E0A2139A0EE0040903A /* Server.cpp */; };
 		B5366E54213AFAF20040903A /* IMP_Image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5366E52213AFAF20040903A /* IMP_Image.cpp */; };
@@ -60,6 +64,34 @@
 			proxyType = 1;
 			remoteGlobalIDString = B5366E4A213AF91E0040903A;
 			remoteInfo = DataLib;
+		};
+		B5003DB9215F99B1007DC6C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5366DC921399E960040903A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5366E2A213AE4090040903A;
+			remoteInfo = ComLib;
+		};
+		B5003DBB215F99B1007DC6C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5366DC921399E960040903A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5366E4A213AF91E0040903A;
+			remoteInfo = DataLib;
+		};
+		B5003DBD215F99B1007DC6C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5366DC921399E960040903A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5003D99215EBC3F007DC6C7;
+			remoteInfo = UtilsLib;
+		};
+		B5003DBF215F99CD007DC6C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5366DC921399E960040903A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5003D99215EBC3F007DC6C7;
+			remoteInfo = UtilsLib;
 		};
 		B5366E232139A44C0040903A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -151,6 +183,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5003DC1215F99D7007DC6C7 /* libUtilsLib.a in Frameworks */,
 				B5003D8E215D7467007DC6C7 /* libDataLib.a in Frameworks */,
 				B5AA3F662140646A002BCC34 /* libComLib.a in Frameworks */,
 			);
@@ -380,6 +413,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B5003DC0215F99CD007DC6C7 /* PBXTargetDependency */,
 				B5003D8B215D7462007DC6C7 /* PBXTargetDependency */,
 				B5AA3F64214063B5002BCC34 /* PBXTargetDependency */,
 			);
@@ -556,6 +590,26 @@
 			isa = PBXTargetDependency;
 			target = B5366E4A213AF91E0040903A /* DataLib */;
 			targetProxy = B5003D8A215D7462007DC6C7 /* PBXContainerItemProxy */;
+		};
+		B5003DBA215F99B1007DC6C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5366E2A213AE4090040903A /* ComLib */;
+			targetProxy = B5003DB9215F99B1007DC6C7 /* PBXContainerItemProxy */;
+		};
+		B5003DBC215F99B1007DC6C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5366E4A213AF91E0040903A /* DataLib */;
+			targetProxy = B5003DBB215F99B1007DC6C7 /* PBXContainerItemProxy */;
+		};
+		B5003DBE215F99B1007DC6C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5003D99215EBC3F007DC6C7 /* UtilsLib */;
+			targetProxy = B5003DBD215F99B1007DC6C7 /* PBXContainerItemProxy */;
+		};
+		B5003DC0215F99CD007DC6C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5003D99215EBC3F007DC6C7 /* UtilsLib */;
+			targetProxy = B5003DBF215F99CD007DC6C7 /* PBXContainerItemProxy */;
 		};
 		B5366E242139A44C0040903A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

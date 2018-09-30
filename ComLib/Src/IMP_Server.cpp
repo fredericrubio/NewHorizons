@@ -177,7 +177,7 @@ bool IMP_Server::sendImage(const IMP_Image* const pImage) {
     
     // check the answer
     lAckMsg->unserialize(lBuffer);
-    if (lAckMsg->getStatus() != pImage->getDataSize()) {
+    if (lAckMsg->getBodyMessage() != pImage->getDataSize()) {
         std::cout << "ERROR IMP_Server::sendImage <invalid ack status>" << std::endl;
         return(false);
     }
@@ -325,7 +325,7 @@ bool IMP_Server::sendServiceMessage(const int pClientSocket, const size_t pSize,
     
     // check the answer
     lAckMsg->unserialize(lBuffer);
-    if (lAckMsg->getStatus() != pSize) {
+    if (lAckMsg->getBodyMessage() != pSize) {
         std::cout << "ERROR IMP_Server::sendServiceMessage <invalid ack status>" << std::endl;
         return(false);
     }

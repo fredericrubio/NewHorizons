@@ -8,7 +8,7 @@
 
 #include "IMP_MessageBody.hpp"
 
-size_t IMP_MessageBody::getSize() {
+unsigned int IMP_MessageBody::getSize() {
     
     return 0;
     

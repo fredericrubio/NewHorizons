@@ -42,7 +42,7 @@ IMP_Message::~IMP_Message() {
     
 }
 
-size_t IMP_Message::serialize(char **pSerializedArray) {
+unsigned int IMP_Message::serialize(char **pSerializedArray) {
     
     // calculate message size
     size_t size = sizeof(date) + sizeof(type);
