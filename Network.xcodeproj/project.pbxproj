@@ -42,7 +42,7 @@
 		B5AA3F712145B3F7002BCC34 /* IMP_Client.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B5AA3F6F2145B3F7002BCC34 /* IMP_Client.hpp */; };
 		B5AA3F7821485BD2002BCC34 /* IMP_AckMessageBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5AA3F7621485BD2002BCC34 /* IMP_AckMessageBody.cpp */; };
 		B5AA3F7921485BD2002BCC34 /* IMP_AckMessageBody.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B5AA3F7721485BD2002BCC34 /* IMP_AckMessageBody.hpp */; };
-		B5CCEAB321613480003F64AE /* NHO_Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5CCEAB221613480003F64AE /* NHO_Log.cpp */; };
+		B5CCEAB321613480003F64AE /* NHO_LOG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5CCEAB221613480003F64AE /* NHO_LOG.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,8 +134,8 @@
 		B5AA3F6F2145B3F7002BCC34 /* IMP_Client.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IMP_Client.hpp; sourceTree = "<group>"; };
 		B5AA3F7621485BD2002BCC34 /* IMP_AckMessageBody.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IMP_AckMessageBody.cpp; sourceTree = "<group>"; };
 		B5AA3F7721485BD2002BCC34 /* IMP_AckMessageBody.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IMP_AckMessageBody.hpp; sourceTree = "<group>"; };
-		B5CCEAB121613476003F64AE /* NHO_Log.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = NHO_Log.hpp; path = UtilsLib/Inc/NHO_Log.hpp; sourceTree = SOURCE_ROOT; };
-		B5CCEAB221613480003F64AE /* NHO_Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NHO_Log.cpp; path = UtilsLib/Src/NHO_Log.cpp; sourceTree = SOURCE_ROOT; };
+		B5CCEAB121613476003F64AE /* NHO_LOG.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = NHO_LOG.hpp; path = UtilsLib/Inc/NHO_LOG.hpp; sourceTree = SOURCE_ROOT; };
+		B5CCEAB221613480003F64AE /* NHO_LOG.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NHO_LOG.cpp; path = UtilsLib/Src/NHO_LOG.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,7 +194,7 @@
 		B5003DB2215EC58D007DC6C7 /* Inc */ = {
 			isa = PBXGroup;
 			children = (
-				B5CCEAB121613476003F64AE /* NHO_Log.hpp */,
+				B5CCEAB121613476003F64AE /* NHO_LOG.hpp */,
 			);
 			path = Inc;
 			sourceTree = "<group>";
@@ -202,7 +202,7 @@
 		B5003DB3215EC592007DC6C7 /* Src */ = {
 			isa = PBXGroup;
 			children = (
-				B5CCEAB221613480003F64AE /* NHO_Log.cpp */,
+				B5CCEAB221613480003F64AE /* NHO_LOG.cpp */,
 			);
 			path = Src;
 			sourceTree = "<group>";
@@ -508,7 +508,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5CCEAB321613480003F64AE /* NHO_Log.cpp in Sources */,
+				B5CCEAB321613480003F64AE /* NHO_LOG.cpp in Sources */,
 				B5366DF521399FB10040903A /* Cllient.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
