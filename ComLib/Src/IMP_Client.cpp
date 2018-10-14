@@ -15,6 +15,13 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <time.h>
+#include <string>
+#include <fstream>
+#include <iostream>
+#include <sys/ioctl.h>
+#include <netinet/tcp.h>
+
 
 #include "IMP_Client.hpp"
 
@@ -23,9 +30,6 @@
 #include "IMP_AckMessageBody.hpp"
 
 #define _DEBUG
-
-#include <sys/ioctl.h>
-#include <netinet/tcp.h>
 
 IMP_Client::IMP_Client(const std::string pHostName, const unsigned int pInfoPort, const int pDataPort) :
 hostName(pHostName), infoPort(pInfoPort), dataPort(pDataPort) {
@@ -93,7 +97,6 @@ bool IMP_Client::initiate() {
     setsockopt(dataSocket, IPPROTO_TCP, TCP_NODELAY, (char *) &flag, sizeof(int));
     
     infoThread = new std::thread(&IMP_Client::receiveInfoMessage, std::ref(*this));
-//    dataThread = new std::thread(&IMP_Client::receiveImageMessage, std::ref(*this));
     dataThread = NULL;
     return true;
 }
@@ -110,14 +113,6 @@ bool IMP_Client::waitForConnection() {
     
 }
 
-void IMP_Client::manageConnection(int) {
-    
-}
-
-#include <time.h>
-#include <string>
-#include <fstream>
-#include <iostream>
 /////////////////////////////////////
 // Never ending loop
 // Wait for data messages on the dedicated socket
@@ -145,16 +140,10 @@ bool IMP_Client::receiveImageMessage() {
         while (lNbBytes < image.getDataSize()) {
             lReceivedBytes = read(dataSocket, lBuffer + lNbBytes, image.getDataSize());
             if (lReceivedBytes < 0) {
-/*                std::cout << "ERROR IMP_Client::receiveImageMessage (number of received bytes) " << lReceivedBytes <<
-                " (errno: " << errno << ")" <<
-                " (nb bytes: " << lNbBytes << ")" << std::endl;*/
                 lNbBytes = image.getDataSize() * 2;
-//                return(false);
             }
             lNbBytes += lReceivedBytes;
             lTotalOfBytes += lReceivedBytes;
-//            std::cout << "IMP_Client::receiveDataMessage Received " <<  lNbBytes <<
-//                " Expected " << image.getDataSize() << std::endl;
         }
         
         if (lNbBytes > image.getDataSize()) {

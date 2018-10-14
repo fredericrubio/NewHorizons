@@ -49,6 +49,9 @@ class IMP_Image {
            }
 */           pixels = pPixels;
        } ;
+    /*
+     *
+     */
        void deletePixels() {
            if (pixels != NULL) {
                free(pixels);

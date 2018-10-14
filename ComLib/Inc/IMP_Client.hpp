@@ -26,8 +26,6 @@ class IMP_Client {
     
     bool waitForConnection();
     
-    void manageConnection(int);
-    
     bool receiveInfoMessage();
     
     bool receiveImageMessage();
