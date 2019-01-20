@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/fredericrubio/Development/Project/New Horizons/Prototyping/Network/Network/Network.xcodeproj">
+      location = "group:../IMG_Server">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>

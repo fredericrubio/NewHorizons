@@ -42,6 +42,8 @@
 		B5AA3F712145B3F7002BCC34 /* IMP_Client.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B5AA3F6F2145B3F7002BCC34 /* IMP_Client.hpp */; };
 		B5AA3F7821485BD2002BCC34 /* IMP_AckMessageBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5AA3F7621485BD2002BCC34 /* IMP_AckMessageBody.cpp */; };
 		B5AA3F7921485BD2002BCC34 /* IMP_AckMessageBody.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B5AA3F7721485BD2002BCC34 /* IMP_AckMessageBody.hpp */; };
+		B5B8806121F5139A00AA0D23 /* HEM_Data.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B5B8806021F5139A00AA0D23 /* HEM_Data.hpp */; };
+		B5B8806321F513A000AA0D23 /* HEM_Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5B8806221F513A000AA0D23 /* HEM_Data.cpp */; };
 		B5CCEAB321613480003F64AE /* NHO_LOG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5CCEAB221613480003F64AE /* NHO_LOG.cpp */; };
 		B5FA458A2172A137009C2893 /* HEM_Message.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5FA45882172A137009C2893 /* HEM_Message.cpp */; };
 		B5FA458B2172A137009C2893 /* HEM_Message.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B5FA45892172A137009C2893 /* HEM_Message.hpp */; };
@@ -136,6 +138,8 @@
 		B5AA3F6F2145B3F7002BCC34 /* IMP_Client.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IMP_Client.hpp; sourceTree = "<group>"; };
 		B5AA3F7621485BD2002BCC34 /* IMP_AckMessageBody.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IMP_AckMessageBody.cpp; sourceTree = "<group>"; };
 		B5AA3F7721485BD2002BCC34 /* IMP_AckMessageBody.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IMP_AckMessageBody.hpp; sourceTree = "<group>"; };
+		B5B8806021F5139A00AA0D23 /* HEM_Data.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HEM_Data.hpp; sourceTree = "<group>"; };
+		B5B8806221F513A000AA0D23 /* HEM_Data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HEM_Data.cpp; sourceTree = "<group>"; };
 		B5CCEAB121613476003F64AE /* NHO_LOG.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = NHO_LOG.hpp; path = UtilsLib/Inc/NHO_LOG.hpp; sourceTree = SOURCE_ROOT; };
 		B5CCEAB221613480003F64AE /* NHO_LOG.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NHO_LOG.cpp; path = UtilsLib/Src/NHO_LOG.cpp; sourceTree = SOURCE_ROOT; };
 		B5FA45882172A137009C2893 /* HEM_Message.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HEM_Message.cpp; sourceTree = "<group>"; };
@@ -219,7 +223,7 @@
 				B5366E4F213AF92F0040903A /* DataLib */,
 				B5366E2F213AE41D0040903A /* ComLib */,
 				B5366DF321399FB10040903A /* Client */,
-				B5366E092139A0EE0040903A /* Server */,
+				B5366E092139A0EE0040903A /* IMG_Server */,
 				B5366DD221399E960040903A /* Products */,
 				B5AA3F652140646A002BCC34 /* Frameworks */,
 			);
@@ -245,12 +249,12 @@
 			path = Client;
 			sourceTree = "<group>";
 		};
-		B5366E092139A0EE0040903A /* Server */ = {
+		B5366E092139A0EE0040903A /* IMG_Server */ = {
 			isa = PBXGroup;
 			children = (
 				B5366E0A2139A0EE0040903A /* Server.cpp */,
 			);
-			path = Server;
+			path = IMG_Server;
 			sourceTree = "<group>";
 		};
 		B5366E2F213AE41D0040903A /* ComLib */ = {
@@ -302,6 +306,7 @@
 		B5366E50213AFA6A0040903A /* Inc */ = {
 			isa = PBXGroup;
 			children = (
+				B5B8806021F5139A00AA0D23 /* HEM_Data.hpp */,
 				B5366E53213AFAF20040903A /* IMP_Image.hpp */,
 			);
 			path = Inc;
@@ -310,6 +315,7 @@
 		B5366E51213AFA6E0040903A /* Src */ = {
 			isa = PBXGroup;
 			children = (
+				B5B8806221F513A000AA0D23 /* HEM_Data.cpp */,
 				B5366E52213AFAF20040903A /* IMP_Image.cpp */,
 			);
 			path = Src;
@@ -351,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5366E55213AFAF20040903A /* IMP_Image.hpp in Headers */,
+				B5B8806121F5139A00AA0D23 /* HEM_Data.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,6 +553,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5B8806321F513A000AA0D23 /* HEM_Data.cpp in Sources */,
 				B5366E54213AFAF20040903A /* IMP_Image.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
