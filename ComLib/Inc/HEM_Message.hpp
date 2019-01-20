@@ -11,6 +11,8 @@
 
 #include <stdio.h>
 
+class HEM_Data;
+
 class HEM_Message {
   
 public:
@@ -36,52 +38,21 @@ public:
      * The management of values out of definition ranges is still to be tackled.
      **/
     bool unserialize();
-
-    /**
-     * Returns the size (in bytes) of a HEM message
-     **/
-    inline size_t getSize() const {
-        return (sizeof(date) + sizeof(cpu) + sizeof(temp) + sizeof(memory)) ;
-    }
     
     /**
-     * Getters
+     * Set the payload.
      **/
-    inline short getCPUUsage() const {return cpu;};
-    inline short getTemperature() const {return temp;};
-    inline short getMemoryUsage() const {return memory;};
+    inline void setData(HEM_Data* const pData) {data = pData;};
     
-    
-    /**
-     * Setters
-     **/
-    inline void setCPUUsage(const short pCPU) {cpu = pCPU;};
-    inline void setTemperature(const short pTemperature) {temp = pTemperature;};
-    inline void setMemoryUsage(const short pMemory) {memory = pMemory;};
+    inline const char* getMsg() const {return msg;};
     
 private:
     long long   date; // 'long long' to force 64bits on 32bits OS
     
-    short cpu;
-    short temp;
-    short memory;
+    HEM_Data*   data;
     
     char* msg;
-    
-    /**
-     * Fetch CPU
-     **/
-    bool fetchCPUUsage();
-    
-    /**
-     * Fetch Temperature
-     **/
-    bool fetchTemperature();
-    
-    /**
-     * Fetch Memory
-     **/
-    bool fetchMemoryUsage();
+
     
 };
 #endif /* HEM_Message_hpp */

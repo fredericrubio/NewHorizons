@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Inc/HEM_Data.hpp</itemPath>
       <itemPath>Inc/IMP_Image.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -13,6 +14,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Src/HEM_Data.cpp</itemPath>
       <itemPath>Src/IMP_Image.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -47,7 +49,11 @@
         <archiverTool>
         </archiverTool>
       </compileType>
+      <item path="Inc/HEM_Data.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Inc/IMP_Image.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Src/HEM_Data.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Src/IMP_Image.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -74,7 +80,11 @@
         <archiverTool>
         </archiverTool>
       </compileType>
+      <item path="Inc/HEM_Data.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Inc/IMP_Image.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Src/HEM_Data.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Src/IMP_Image.cpp" ex="false" tool="1" flavor2="0">
       </item>

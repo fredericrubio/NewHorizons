@@ -23,7 +23,7 @@ AS=as
 # Macros
 CND_PLATFORM=GNU-Linux
 CND_DLIB_EXT=so
-CND_CONF=Debug
+CND_CONF=Release
 CND_DISTDIR=dist
 CND_BUILDDIR=build
 
@@ -35,8 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/Src/HEM_Data.o \
-	${OBJECTDIR}/Src/IMP_Image.o
+	${OBJECTDIR}/main.o
 
 
 # C Compiler Flags
@@ -57,23 +56,16 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdatalib.a
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hem_server
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdatalib.a: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hem_server: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdatalib.a
-	${AR} -rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdatalib.a ${OBJECTFILES} 
-	$(RANLIB) ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdatalib.a
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hem_server ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/Src/HEM_Data.o: Src/HEM_Data.cpp
-	${MKDIR} -p ${OBJECTDIR}/Src
+${OBJECTDIR}/main.o: main.cpp
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -D_RASPBIAN -IInc -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/HEM_Data.o Src/HEM_Data.cpp
-
-${OBJECTDIR}/Src/IMP_Image.o: Src/IMP_Image.cpp
-	${MKDIR} -p ${OBJECTDIR}/Src
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -D_RASPBIAN -IInc -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/IMP_Image.o Src/IMP_Image.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:
