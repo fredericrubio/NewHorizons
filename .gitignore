@@ -60,3 +60,5 @@ DerivedData/
 /UtilsLib/.dep.inc
 /UtilsLib/build/
 /UtilsLib/dist/
+/HEM_Server/build/
+/HEM_Server/dist/

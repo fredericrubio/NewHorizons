@@ -10,18 +10,22 @@
 
 #include "HEM_Message.hpp"
 
+#include "HEM_Data.hpp"
+
 /**
  * Constructors
  **/
 HEM_Message::HEM_Message(const long long   pDate):
-date(pDate), msg(NULL){
-    
+date(pDate), data(NULL), msg(NULL){
+        
 }
 
 /**
  * Destructor
  **/
 HEM_Message::~HEM_Message() {
+    
+    delete data;
     
     if (msg != NULL) {
         free(msg);
@@ -35,29 +39,39 @@ HEM_Message::~HEM_Message() {
  **/
 size_t HEM_Message::serialize() {
     
-    // calculate message size
-    size_t lSize = getSize();
-
+    if (data == NULL) {
+        return 0;    
+    }
+    
     if (msg != NULL) {
         free(msg);
     }
     
+    // calculate message size
+    size_t lSize = data->getSize();
+
     msg = (char *) calloc(lSize, sizeof(char));
     
     // copy values
     unsigned int offset = 0;
     /// date
-    memcpy((void *) msg, &date, sizeof(date));
-    offset += sizeof(date);
+    long long lDate = data->getDate();
+    memcpy((void *) msg, &lDate, sizeof(lDate));
+    offset += sizeof(lDate);
     /// cpu
-    memcpy((void *) (msg + offset), &cpu, sizeof(cpu));
-    offset += sizeof(cpu);
+    short lCpu = data->getCPUUsage();
+    memcpy((void *) (msg + offset), &lCpu, sizeof(lCpu));
+    offset += sizeof(lCpu);
+    
     /// temp
-    memcpy((void *) (msg + offset), &temp, sizeof(temp));
-    offset += sizeof(temp);
+    short lTemp = data->getTemperature();
+    memcpy((void *) (msg + offset), &lTemp, sizeof(lTemp));
+    offset += sizeof(lTemp);
+    
     /// mempry
-    memcpy((void *) (msg + offset), &memory, sizeof(memory));
-    offset += sizeof(memory);
+    short lMemory = data->getMemoryUsage();
+    memcpy((void *) (msg + offset), &lMemory, sizeof(lMemory));
+    offset += sizeof(lMemory);
     
     return lSize;
 }
@@ -70,6 +84,7 @@ size_t HEM_Message::serialize() {
 bool HEM_Message::unserialize() {
     // calculate message size
     unsigned int offset = 0;
+    HEM_Data* lData = new HEM_Data();
     
     if (msg == NULL) {
         return false;
@@ -77,50 +92,31 @@ bool HEM_Message::unserialize() {
     
     // copy values
     /// date
-    memcpy(&date, (void *) msg, sizeof(date));
-    offset += sizeof(date);
+    long long lDate;
+    memcpy(&lDate, (void *) msg, sizeof(lDate));
+    offset += sizeof(lDate);
+    lData->setDate(lDate);
+    
     /// cpu
-    memcpy(&cpu, (void *) msg, sizeof(cpu));
-    offset += sizeof(cpu);
+    short lCpu;
+    memcpy(&lCpu, (void *) msg, sizeof(lCpu));
+    offset += sizeof(lCpu);
+    lData->setCPUUsage(lCpu);
+    
     /// temp
-    memcpy(&date, (void *) msg, sizeof(temp));
-    offset += sizeof(temp);
+    short lTemperature;
+    memcpy(&lTemperature, (void *) msg, sizeof(lTemperature));
+    offset += sizeof(lTemperature);
+    lData->setTemperature(lTemperature);
+    
     /// memory
-    memcpy(&date, (void *) msg, sizeof(memory));
-    offset += sizeof(memory);
+    short lMemory;
+    memcpy(&lMemory, (void *) msg, sizeof(lMemory));
+    offset += sizeof(lMemory);
+    lData->setMemoryUsage(lMemory);
+    
+    setData(lData);
     
     return true;
 }
 
-/**
- * Fetch CPU
- **/
-bool HEM_Message::fetchCPUUsage() {
-#ifdef _RASPBIAN
-    int FileHandler;
-    char FileBuffer[1024];
-    float load;
-    
-    FileHandler = open("/proc/loadavg", O_RDONLY);
-    if(FileHandler < 0) {
-        return -1; }
-    read(FileHandler, FileBuffer, sizeof(FileBuffer) - 1);
-    sscanf(FileBuffer, "%f", &load);
-    close(FileHandler);
-    return (int)(load * 100);
-#endif
-}
-
-/**
- * Fetch Temperature
- **/
-bool HEM_Message::fetchTemperature() {
-    
-}
-
-/**
- * Fetch Memory
- **/
-bool HEM_Message::fetchMemoryUsage() {
-    
-}

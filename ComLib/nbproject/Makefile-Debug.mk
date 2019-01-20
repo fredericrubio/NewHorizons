@@ -35,6 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Src/HEM_Message.o \
+	${OBJECTDIR}/Src/HEM_Server.o \
 	${OBJECTDIR}/Src/IMP_Client.o \
 	${OBJECTDIR}/Src/IMP_ImageSizeMessageBody.o \
 	${OBJECTDIR}/Src/IMP_Message.o \
@@ -66,6 +68,16 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libComLib.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libComLib.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
+
+${OBJECTDIR}/Src/HEM_Message.o: Src/HEM_Message.cpp
+	${MKDIR} -p ${OBJECTDIR}/Src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -D_RASPBIAN -IInc -I../DataLib/Inc -I../CameraLib/Inc -I../RaspiCam/Inc -I../UtilsLib/Inc -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/HEM_Message.o Src/HEM_Message.cpp
+
+${OBJECTDIR}/Src/HEM_Server.o: Src/HEM_Server.cpp
+	${MKDIR} -p ${OBJECTDIR}/Src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -D_RASPBIAN -IInc -I../DataLib/Inc -I../CameraLib/Inc -I../RaspiCam/Inc -I../UtilsLib/Inc -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Src/HEM_Server.o Src/HEM_Server.cpp
 
 ${OBJECTDIR}/Src/IMP_Client.o: Src/IMP_Client.cpp
 	${MKDIR} -p ${OBJECTDIR}/Src

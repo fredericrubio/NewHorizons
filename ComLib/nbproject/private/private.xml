@@ -8,7 +8,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Volumes/Projects/Network/ComLib/Src/IMP_Server.cpp</file>
+            <file>file:/Volumes/Projects/Network/ComLib/Inc/HEM_Server.hpp</file>
+            <file>file:/Volumes/Projects/Network/ComLib/Src/IMP_Message.cpp</file>
+            <file>file:/Volumes/Projects/Network/ComLib/Src/IMP_Client.cpp</file>
+            <file>file:/Volumes/Projects/Network/ComLib/Src/HEM_Message.cpp</file>
+            <file>file:/Volumes/Projects/Network/ComLib/Inc/HEM_Message.hpp</file>
             <file>file:/Volumes/Projects/Network/ComLib/Inc/IMP_Server.hpp</file>
+            <file>file:/Volumes/Projects/Network/ComLib/Src/HEM_Server.cpp</file>
         </group>
     </open-files>
 </project-private>
