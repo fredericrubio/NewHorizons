@@ -25,7 +25,7 @@ public:
      * Returns the size (in bytes) of a HEM message
      **/
     static inline size_t getSize() {
-        return (sizeof(date) + sizeof(cpu) + sizeof(temp) + sizeof(memory)) ;
+        return (sizeof(date) + sizeof(cpu) + sizeof(temp) + sizeof(usedMemory)) ;
     }
     
     /**
@@ -34,14 +34,14 @@ public:
     inline long long getDate() const {return date;};
     inline short getCPUUsage() const {return cpu;};
     inline short getTemperature() const {return temp;};
-    inline short getMemoryUsage() const {return memory;};
+    inline short getMemoryUsage() const {return usedMemory;};
     
     /**
      * Setters
      **/
     inline void setCPUUsage(const short pCPU) {cpu = pCPU;};
     inline void setTemperature(const short pTemperature) {temp = pTemperature;};
-    inline void setMemoryUsage(const short pMemory) {memory = pMemory;};
+    inline void setMemoryUsage(const short pMemory) {usedMemory = pMemory;};
     inline void setDate(const long long pDate) {date = pDate;};
     
     /**
@@ -54,7 +54,7 @@ private:
     
     short cpu;
     short temp;
-    short memory;
+    short usedMemory;
     
     /**
      * Fetch CPU
