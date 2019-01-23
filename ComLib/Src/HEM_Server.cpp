@@ -43,23 +43,13 @@ bool HEM_Server::initiate() {
         NHO_FILE_LOG(logERROR) << "HEM_Server::initiate: Unable to create emission socket" << std::endl;
         return(false);
     }
-        // this call is what allows broadcast packets to be sent:
+    // this call is what allows broadcast packets to be sent:
     if (setsockopt( emissionSocket, SOL_SOCKET, SO_BROADCAST, 
-                    &broadcast, sizeof broadcast) == -1) {
+                    &broadcast, sizeof(broadcast) == -1)) {
         NHO_FILE_LOG(logERROR) << "HEM_Server::initiate: setsockopt (SO_BROADCAST)" << std::endl;
         return(false);
     }
     
-/*
-    bzero((char *) &lInfoServAddr, sizeof(lInfoServAddr));
-    lInfoServAddr.sin_family = AF_INET;
-    lInfoServAddr.sin_addr.s_addr = INADDR_ANY;
-    lInfoServAddr.sin_port = htons(emissionPort);
-    if (bind(emissionSocket, (struct sockaddr *) &lInfoServAddr, sizeof(lInfoServAddr)) < 0) {
-        NHO_FILE_LOG(logERROR) << "HEM_Server::initiate: Unable to bind" << std::endl;
-        return(false);
-    }
-*/
     // launch the emission thread
     emissionThread = new std::thread(&HEM_Server::sendHEM, std::ref(*this));
     
