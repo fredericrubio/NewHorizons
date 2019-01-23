@@ -35,12 +35,22 @@ bool HEM_Server::initiate() {
     std::cout << "IMP_Server::initiate \n";
 #endif
     struct sockaddr_in lInfoServAddr;
+    int broadcast = 1;
+    
     // service channel
-    emissionSocket = socket(AF_INET, SOCK_DGRAM, 0);
+    emissionSocket = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
     if (emissionSocket < 0) {
         NHO_FILE_LOG(logERROR) << "HEM_Server::initiate: Unable to create emission socket" << std::endl;
         return(false);
     }
+        // this call is what allows broadcast packets to be sent:
+    if (setsockopt( emissionSocket, SOL_SOCKET, SO_BROADCAST, 
+                    &broadcast, sizeof broadcast) == -1) {
+        NHO_FILE_LOG(logERROR) << "HEM_Server::initiate: setsockopt (SO_BROADCAST)" << std::endl;
+        return(false);
+    }
+    
+/*
     bzero((char *) &lInfoServAddr, sizeof(lInfoServAddr));
     lInfoServAddr.sin_family = AF_INET;
     lInfoServAddr.sin_addr.s_addr = INADDR_ANY;
@@ -49,7 +59,7 @@ bool HEM_Server::initiate() {
         NHO_FILE_LOG(logERROR) << "HEM_Server::initiate: Unable to bind" << std::endl;
         return(false);
     }
-
+*/
     // launch the emission thread
     emissionThread = new std::thread(&HEM_Server::sendHEM, std::ref(*this));
     
@@ -74,8 +84,8 @@ bool HEM_Server::sendHEM() {
         // serialize message
         lMessage->serialize();
             
-        if (HEM_Server::sendServiceMessage(HEM_Data::getSize(), lMessage->getMsg())) {
-            NHO_FILE_LOG(logWARNING) << "IHEM_Server::sendHEM: Sendig HEM failed" << std::endl;
+        if (HEM_Server::sendServiceMessage(HEM_Data::getSize(), lMessage->getMsg()) == false) {
+            NHO_FILE_LOG(logWARNING) << "HEM_Server::sendHEM: Sendig HEM failed" << std::endl;
         }
         
         // sleep for a while
@@ -87,11 +97,19 @@ bool HEM_Server::sendHEM() {
 }
 
 bool HEM_Server::sendServiceMessage(const size_t pSize, const char* const pMessage) {
-
+    
+    struct sockaddr_in lInfoServAddr;  
+    
+    bzero((char *) &lInfoServAddr, sizeof(lInfoServAddr));
+    lInfoServAddr.sin_family = AF_INET;
+    lInfoServAddr.sin_addr.s_addr = INADDR_ANY;
+    lInfoServAddr.sin_port = htons(emissionPort);
+    
     // send message
-    size_t lWrittenBytes = write(emissionSocket, pMessage, pSize);
+    size_t lWrittenBytes = sendto(emissionSocket, pMessage, pSize, 0, (struct sockaddr *)&lInfoServAddr, sizeof(lInfoServAddr));  
+//    size_t lWrittenBytes = write(emissionSocket, pMessage, pSize);
     if (lWrittenBytes != pSize) {
-        NHO_FILE_LOG(logERROR) << "IHEM_Server::sendMessage: Sendig HEM" << std::endl;
+        NHO_FILE_LOG(logERROR) << "HEM_Server::sendMessage: Sendig HEM" << std::endl;
         return(false);
     }
     

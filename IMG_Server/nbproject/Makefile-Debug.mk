@@ -56,21 +56,21 @@ LDLIBSOPTIONS=-lpthread -Wl,-rpath,'../ComLib/dist/Debug/GNU-Linux' -L../ComLib/
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/server
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/img_server
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/server: ../ComLib/dist/Debug/GNU-Linux/libComLib.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/img_server: ../ComLib/dist/Debug/GNU-Linux/libComLib.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/server: ../DataLib/dist/Debug/GNU-Linux/libdatalib.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/img_server: ../DataLib/dist/Debug/GNU-Linux/libdatalib.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/server: ../CameraLib/dist/Debug/GNU-Linux/libcameralib.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/img_server: ../CameraLib/dist/Debug/GNU-Linux/libcameralib.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/server: ../RaspiCam/Lib/libraspicam.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/img_server: ../RaspiCam/Lib/libraspicam.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/server: ../UtilsLib/dist/Debug/GNU-Linux/libUtilsLib.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/img_server: ../UtilsLib/dist/Debug/GNU-Linux/libUtilsLib.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/server: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/img_server: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/server ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/img_server ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/Server.o: Server.cpp
 	${MKDIR} -p ${OBJECTDIR}
@@ -88,7 +88,7 @@ ${OBJECTDIR}/Server.o: Server.cpp
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
 	${RM} -r ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libComLib.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libraspicam.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libUtilsLib.so
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/server
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/img_server
 
 # Subprojects
 .clean-subprojects:

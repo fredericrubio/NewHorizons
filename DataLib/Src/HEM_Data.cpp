@@ -42,7 +42,7 @@ bool HEM_Data::fetch() {
     
     bool lReturn = false;
     
-    lReturn = fetchCPUUsage() || fetchMemoryUsage() || fetchTemperature();
+    lReturn = fetchCPUUsage() && fetchMemoryUsage() && fetchTemperature();
     
     return lReturn;
 }
@@ -68,7 +68,7 @@ bool HEM_Data::fetchCPUUsage() {
     // close file
     close(FileHandler);
     
-    cpu = (short) load * 100;
+    cpu = (short) (load * 100.0);
     // manage HERE the 100% limit
     
     return true;
@@ -127,7 +127,13 @@ bool HEM_Data::fetchMemoryUsage() {
     //Multiply in next statement to avoid int overflow on right hand side...
     totalPhysMem *= memInfo.mem_unit;
 
-    memory = (short) (physMemUsed / totalPhysMem) * 100.0;
+    // convert into mega-bytes
+    if (memInfo.mem_unit == 1) {
+        physMemUsed /= 1024 ;
+        totalPhysMem /= 1024 ;
+    }
+    
+    usedMemory = (short) (((double) physMemUsed / (double) totalPhysMem) * 100.0);
     return true;
     
 #else
