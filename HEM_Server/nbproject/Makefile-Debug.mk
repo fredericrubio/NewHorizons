@@ -75,7 +75,7 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hem_server: ${OBJECTFILES}
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -include ../ComLib/Inc -include ../UtilsLib/Inc -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -I../ComLib/Inc -I../UtilsLib/Inc -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:

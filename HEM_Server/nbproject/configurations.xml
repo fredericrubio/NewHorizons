@@ -44,10 +44,10 @@
           </incDir>
         </cTool>
         <ccTool>
-          <incFile>
+          <incDir>
             <pElem>../ComLib/Inc</pElem>
             <pElem>../UtilsLib/Inc</pElem>
-          </incFile>
+          </incDir>
         </ccTool>
         <linkerTool>
           <linkerLibItems>

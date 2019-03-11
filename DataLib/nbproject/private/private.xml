@@ -10,5 +10,10 @@
             <file>file:/Volumes/Projects/Network/DataLib/Inc/IMP_Image.hpp</file>
             <file>file:/Volumes/Projects/Network/DataLib/Src/HEM_Data.cpp</file>
         </group>
+        <group name="New Horizons">
+            <file>file:/Volumes/Projects/Network/DataLib/Inc/HEM_Data.hpp</file>
+            <file>file:/Volumes/Projects/Network/DataLib/Inc/IMP_Image.hpp</file>
+            <file>file:/Volumes/Projects/Network/DataLib/Src/HEM_Data.cpp</file>
+        </group>
     </open-files>
 </project-private>
