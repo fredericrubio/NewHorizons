@@ -15,6 +15,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <string.h>
+#include <errno.h>  
 
 #include "HEM_Server.hpp"
 
@@ -36,6 +37,8 @@ bool HEM_Server::initiate() {
 #endif
     struct sockaddr_in lInfoServAddr;
     int broadcast = 1;
+//    char broadcast = '1';
+    socklen_t optlen = sizeof(broadcast);
     
     // service channel
     emissionSocket = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
@@ -44,8 +47,11 @@ bool HEM_Server::initiate() {
         return(false);
     }
     // this call is what allows broadcast packets to be sent:
+    getsockopt( emissionSocket, SOL_SOCKET, SO_BROADCAST, 
+                    &broadcast, &optlen);
     if (setsockopt( emissionSocket, SOL_SOCKET, SO_BROADCAST, 
-                    &broadcast, sizeof(broadcast) == -1)) {
+                    &broadcast, optlen) == -1) {
+        NHO_FILE_LOG(logERROR) << "HEM_Server::initiate: " << strerror(errno) << std::endl;
         NHO_FILE_LOG(logERROR) << "HEM_Server::initiate: setsockopt (SO_BROADCAST)" << std::endl;
         return(false);
     }
@@ -80,6 +86,7 @@ bool HEM_Server::sendHEM() {
         
         // sleep for a while
         std::this_thread::sleep_for (std::chrono::milliseconds(period));
+        NHO_FILE_LOG(logWARNING) << "HEM_Server::sendHEM: Sendig HEM" << std::endl;
         
     }
     while(1);

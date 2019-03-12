@@ -83,6 +83,7 @@ ${OBJECTDIR}/main.o: main.cpp
 	cd ../DataLib && ${MAKE}  -f Makefile CONF=Debug
 	cd ../CameraLib && ${MAKE}  -f Makefile CONF=Debug
 	cd ../UtilsLib && ${MAKE}  -f Makefile CONF=Debug
+	cd ../ComLib && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -96,6 +97,7 @@ ${OBJECTDIR}/main.o: main.cpp
 	cd ../DataLib && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../CameraLib && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../UtilsLib && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../ComLib && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl
