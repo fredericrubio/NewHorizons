@@ -36,18 +36,11 @@ HEM_Client::HEM_Client(const int pDataPort) : dataPort(pDataPort) {
 bool HEM_Client::initiate() {
 
     // local variables
-    struct hostent *server;
-    int sockfd;
     struct addrinfo hints, *servinfo, *p;
     int rv;
-    int numbytes;
-    struct sockaddr_storage their_addr;
-    char buf[MAXBUFLEN];
-    socklen_t addr_len;
-    char s[INET6_ADDRSTRLEN];
     
     memset(&hints, 0, sizeof hints);
-    hints.ai_family = AF_UNSPEC; // set to AF_INET to force IPv4
+    hints.ai_family = AF_INET;//AF_UNSPEC; // set to AF_INET to force IPv4
     hints.ai_socktype = SOCK_DGRAM;
     hints.ai_flags = AI_PASSIVE; // use my IP
     
@@ -96,16 +89,12 @@ bool HEM_Client::waitForConnection() {
 // Wait for HEM messages in the dedicated socket
 bool HEM_Client::receiveDataMessage() {
 #ifdef _DEBUG
-    std::cout << "IMP_Client::receiveDataMessage" << std::endl;
+    std::cout << "HEM_Client::receiveDataMessage" << std::endl;
 #endif
-    int sockfd;
-    struct addrinfo hints, *servinfo, *p;
-    int rv;
-    int numbytes;
+    long numbytes;
     struct sockaddr_storage their_addr;
     char buf[MAXBUFLEN];
     socklen_t addr_len;
-    char s[INET6_ADDRSTRLEN];
     
 /*    char lBuffer[IMP_Message::MAX_SIZE];
     long lReceivedBytes;
@@ -113,15 +102,18 @@ bool HEM_Client::receiveDataMessage() {
  */
     while (1) {
         
+#ifdef _DEBUG
+        std::cout << "HEM_Client::receiveDataMessage stalled on recvfrom" << std::endl;
+#endif
         addr_len = sizeof their_addr;
         if ((numbytes = recvfrom(dataSocket, buf, MAXBUFLEN-1 , 0,
                                  (struct sockaddr *)&their_addr, &addr_len)) == -1) {
-            std::cout << "IMP_Client::receiveDataMessage recvfrom" << std::endl;
+            std::cout << "HEM_Client::receiveDataMessage recvfrom" << std::endl;
             return(false);
         }
         
 #ifdef _DEBUG
-                std::cout << "IMP_Client::receiveDataMessage image initialized" << std::endl;
+        std::cout << "HEM_Client::receiveDataMessage  end" << std::endl;
 #endif
     }
     

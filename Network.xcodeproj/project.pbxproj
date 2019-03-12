@@ -50,6 +50,8 @@
 		B5B8807421F8FF6700AA0D23 /* HEM_Server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5B8807321F8FF6700AA0D23 /* HEM_Server.cpp */; };
 		B5B8807621F8FF6E00AA0D23 /* HEM_Server.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B5B8807521F8FF6E00AA0D23 /* HEM_Server.hpp */; };
 		B5CCEAB321613480003F64AE /* NHO_LOG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5CCEAB221613480003F64AE /* NHO_LOG.cpp */; };
+		B5DFF6912236E6CB001276EB /* libComLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5366E2B213AE4090040903A /* libComLib.a */; };
+		B5DFF6922236E6CB001276EB /* libDataLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5366E4B213AF91E0040903A /* libDataLib.a */; };
 		B5FA458A2172A137009C2893 /* HEM_Message.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5FA45882172A137009C2893 /* HEM_Message.cpp */; };
 		B5FA458B2172A137009C2893 /* HEM_Message.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B5FA45892172A137009C2893 /* HEM_Message.hpp */; };
 /* End PBXBuildFile section */
@@ -210,6 +212,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5DFF6912236E6CB001276EB /* libComLib.a in Frameworks */,
+				B5DFF6922236E6CB001276EB /* libDataLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
