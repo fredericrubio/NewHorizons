@@ -7,9 +7,22 @@
 //
 
 #include <iostream>
+#include <unistd.h>
+
+#include "HEM_Client.hpp"
+
+
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    
+    HEM_Client* lClient = new HEM_Client(51717);
+    lClient->initiate();
+    
+    unsigned int microseconds = 10000000;
+    while(1) {
+        usleep(microseconds);
+    }
+    delete lClient;
+    
     return 0;
 }
