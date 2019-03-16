@@ -52,52 +52,48 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-Wl,-rpath,'../ComLib/dist/Debug/GNU-Linux' -L../ComLib/dist/Debug/GNU-Linux -lComLib ../DataLib/dist/Debug/GNU-Linux/libdatalib.a ../CameraLib/dist/Debug/GNU-Linux/libcameralib.a -Wl,-rpath,'../UtilsLib/dist/Debug/GNU-Linux' -L../UtilsLib/dist/Debug/GNU-Linux -lUtilsLib ../RaspiCam/Lib/libraspicam.so
+LDLIBSOPTIONS=-L../RaspiCam/Lib -Wl,-rpath,'../ComLib/dist/Debug/GNU-Linux' -L../ComLib/dist/Debug/GNU-Linux -lComLib ../DataLib/dist/Debug/GNU-Linux/libdatalib.a ../CameraLib/dist/Debug/GNU-Linux/libcameralib.a -lraspicam
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hem_server
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hem_client
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hem_server: ../ComLib/dist/Debug/GNU-Linux/libComLib.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hem_client: ../ComLib/dist/Debug/GNU-Linux/libComLib.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hem_server: ../DataLib/dist/Debug/GNU-Linux/libdatalib.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hem_client: ../DataLib/dist/Debug/GNU-Linux/libdatalib.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hem_server: ../CameraLib/dist/Debug/GNU-Linux/libcameralib.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hem_client: ../CameraLib/dist/Debug/GNU-Linux/libcameralib.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hem_server: ../UtilsLib/dist/Debug/GNU-Linux/libUtilsLib.so
-
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hem_server: ../RaspiCam/Lib/libraspicam.so
-
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hem_server: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hem_client: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hem_server ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hem_client ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../ComLib/Inc -I../UtilsLib/Inc -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -I../ComLib/Inc -I../DataLib/Inc -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:
 	cd ../ComLib && ${MAKE}  -f Makefile CONF=Debug
 	cd ../DataLib && ${MAKE}  -f Makefile CONF=Debug
 	cd ../CameraLib && ${MAKE}  -f Makefile CONF=Debug
-	cd ../UtilsLib && ${MAKE}  -f Makefile CONF=Debug
 	cd ../ComLib && ${MAKE}  -f Makefile CONF=Debug
+	cd ../DataLib && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} -r ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libComLib.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libUtilsLib.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libraspicam.so
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hem_server
+	${RM} -r ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libComLib.so
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hem_client
 
 # Subprojects
 .clean-subprojects:
 	cd ../ComLib && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../DataLib && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../CameraLib && ${MAKE}  -f Makefile CONF=Debug clean
-	cd ../UtilsLib && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../ComLib && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../DataLib && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

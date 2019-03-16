@@ -35,21 +35,16 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
-        <cTool>
-          <incDir>
-            <pElem>../ComLib/Inc</pElem>
-            <pElem>../UtilsLib/Inc</pElem>
-            <pElem>../DataLib/Inc</pElem>
-            <pElem>..</pElem>
-          </incDir>
-        </cTool>
         <ccTool>
           <incDir>
             <pElem>../ComLib/Inc</pElem>
-            <pElem>../UtilsLib/Inc</pElem>
+            <pElem>../DataLib/Inc</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
+          <linkerAddLib>
+            <pElem>../RaspiCam/Lib</pElem>
+          </linkerAddLib>
           <linkerLibItems>
             <linkerLibProjectItem>
               <makeArtifact PL="../ComLib"
@@ -87,19 +82,7 @@
                             OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libcameralib.a">
               </makeArtifact>
             </linkerLibProjectItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../UtilsLib"
-                            CT="2"
-                            CN="Debug"
-                            AC="true"
-                            BL="true"
-                            WD="../UtilsLib"
-                            BC="${MAKE}  -f Makefile CONF=Debug"
-                            CC="${MAKE}  -f Makefile CONF=Debug clean"
-                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libUtilsLib.${CND_DLIB_EXT}">
-              </makeArtifact>
-            </linkerLibProjectItem>
-            <linkerLibFileItem>../RaspiCam/Lib/libraspicam.so</linkerLibFileItem>
+            <linkerLibLibItem>raspicam</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
         <requiredProjects>
@@ -112,6 +95,16 @@
                         BC="${MAKE}  -f Makefile CONF=Debug"
                         CC="${MAKE}  -f Makefile CONF=Debug clean"
                         OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libComLib.${CND_DLIB_EXT}">
+          </makeArtifact>
+          <makeArtifact PL="../DataLib"
+                        CT="3"
+                        CN="Debug"
+                        AC="true"
+                        BL="true"
+                        WD="../DataLib"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdatalib.a">
           </makeArtifact>
         </requiredProjects>
       </compileType>

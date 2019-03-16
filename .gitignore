@@ -62,3 +62,7 @@ DerivedData/
 /UtilsLib/dist/
 /HEM_Server/build/
 /HEM_Server/dist/
+/IMG_Server/dist/
+/IMG_Server/build/
+/HEM_Client/build/
+/HEM_Client/dist/
