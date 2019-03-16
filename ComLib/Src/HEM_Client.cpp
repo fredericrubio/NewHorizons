@@ -25,7 +25,9 @@
 #include <sys/socket.h>
 #include <netdb.h>
 
+#include "NHO_LOG.hpp"
 #include "HEM_Client.hpp"
+#include "HEM_Message.hpp"
 
 #define _DEBUG
 
@@ -38,6 +40,8 @@ bool HEM_Client::initiate() {
     // local variables
     struct addrinfo hints, *servinfo, *p;
     int rv;
+    int broadcast = 1;
+    socklen_t optlen = sizeof(broadcast);
     
     memset(&hints, 0, sizeof hints);
     hints.ai_family = AF_INET;//AF_UNSPEC; // set to AF_INET to force IPv4
@@ -67,7 +71,28 @@ bool HEM_Client::initiate() {
         std::cout << "ERROR HEM_Client::initiate failed to bind socket." << std::endl;
         return 2;
     }
-    
+
+/*    struct sockaddr_in client;
+    struct hostent* he = gethostbyname("192.168.0.255");
+/*
+    bzero(&client, sizeof(client));
+//    client.sin_addr.s_addr = htonl(INADDR_ANY);
+    client.sin_addr = *((struct in_addr *)he->h_addr);
+    client.sin_family      = AF_INET;
+    client.sin_port        = htons(dataPort);
+    int code = bind(dataSocket, (struct sockaddr *)&client, sizeof(struct sockaddr));
+    if (code) {
+        fprintf(stderr, "bind() : %s\n", strerror(errno));
+        close(dataSocket);
+        return -1;
+    }
+*/
+/*    if (setsockopt( dataSocket, SOL_SOCKET, SO_BROADCAST, &broadcast, optlen) == -1) {
+        NHO_FILE_LOG(logERROR) << "HEM_Client::receiveDataMessage: setsockopt (SO_BROADCAST)" << std::endl;
+        NHO_FILE_LOG(logERROR) << "HEM_Client::receiveDataMessage: " << strerror(errno) << std::endl;
+        return(false);
+    }
+*/
     dataThread = new std::thread(&HEM_Client::receiveDataMessage, std::ref(*this));
     return true;
 }
@@ -100,6 +125,8 @@ bool HEM_Client::receiveDataMessage() {
     long lReceivedBytes;
     IMP_Message* lMessage = NULL;
  */
+    HEM_Message* lMessage = new HEM_Message(clock());
+    
     while (1) {
         
 #ifdef _DEBUG
@@ -111,9 +138,12 @@ bool HEM_Client::receiveDataMessage() {
             std::cout << "HEM_Client::receiveDataMessage recvfrom" << std::endl;
             return(false);
         }
-        
+        lMessage->setMsg(numbytes, buf);
+        lMessage->unserialize();
 #ifdef _DEBUG
-        std::cout << "HEM_Client::receiveDataMessage  end" << std::endl;
+        std::cout << "HEM_Client::receiveDataMessage CPU:" << lMessage->getDate()->getCPUUsage() << std::endl;
+        std::cout << "HEM_Client::receiveDataMessage Memory:" << lMessage->getDate()->getMemoryUsage() << std::endl;
+        std::cout << "HEM_Client::receiveDataMessage Temperature:" << lMessage->getDate()->getTemperature() << std::endl;
 #endif
     }
     
