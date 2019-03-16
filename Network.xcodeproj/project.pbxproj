@@ -42,6 +42,9 @@
 		B5AA3F712145B3F7002BCC34 /* IMP_Client.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B5AA3F6F2145B3F7002BCC34 /* IMP_Client.hpp */; };
 		B5AA3F7821485BD2002BCC34 /* IMP_AckMessageBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5AA3F7621485BD2002BCC34 /* IMP_AckMessageBody.cpp */; };
 		B5AA3F7921485BD2002BCC34 /* IMP_AckMessageBody.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B5AA3F7721485BD2002BCC34 /* IMP_AckMessageBody.hpp */; };
+		B5B864782238527B00776517 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5B864772238527B00776517 /* main.cpp */; };
+		B5B8647C2238530500776517 /* libComLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5366E2B213AE4090040903A /* libComLib.a */; };
+		B5B8647D2238530500776517 /* libDataLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5366E4B213AF91E0040903A /* libDataLib.a */; };
 		B5B8806121F5139A00AA0D23 /* HEM_Data.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B5B8806021F5139A00AA0D23 /* HEM_Data.hpp */; };
 		B5B8806321F513A000AA0D23 /* HEM_Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5B8806221F513A000AA0D23 /* HEM_Data.cpp */; };
 		B5B8806B21F516F800AA0D23 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5B8806A21F516F800AA0D23 /* main.cpp */; };
@@ -120,6 +123,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		B5B864732238527B00776517 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		B5B8806621F516F800AA0D23 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -154,6 +166,8 @@
 		B5AA3F6F2145B3F7002BCC34 /* IMP_Client.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IMP_Client.hpp; sourceTree = "<group>"; };
 		B5AA3F7621485BD2002BCC34 /* IMP_AckMessageBody.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IMP_AckMessageBody.cpp; sourceTree = "<group>"; };
 		B5AA3F7721485BD2002BCC34 /* IMP_AckMessageBody.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IMP_AckMessageBody.hpp; sourceTree = "<group>"; };
+		B5B864752238527B00776517 /* HEM_Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HEM_Server; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5B864772238527B00776517 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		B5B8806021F5139A00AA0D23 /* HEM_Data.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HEM_Data.hpp; sourceTree = "<group>"; };
 		B5B8806221F513A000AA0D23 /* HEM_Data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HEM_Data.cpp; sourceTree = "<group>"; };
 		B5B8806821F516F800AA0D23 /* HEM_Client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HEM_Client; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,6 +222,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B5B864722238527B00776517 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5B8647C2238530500776517 /* libComLib.a in Frameworks */,
+				B5B8647D2238530500776517 /* libDataLib.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B5B8806521F516F800AA0D23 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -256,6 +279,7 @@
 				B5366DF321399FB10040903A /* Client */,
 				B5366E092139A0EE0040903A /* IMG_Server */,
 				B5B8806921F516F800AA0D23 /* HEM_Client */,
+				B5B864762238527B00776517 /* HEM_Server */,
 				B5366DD221399E960040903A /* Products */,
 				B5AA3F652140646A002BCC34 /* Frameworks */,
 			);
@@ -270,6 +294,7 @@
 				B5366E4B213AF91E0040903A /* libDataLib.a */,
 				B5003D9A215EBC3F007DC6C7 /* libUtilsLib.a */,
 				B5B8806821F516F800AA0D23 /* HEM_Client */,
+				B5B864752238527B00776517 /* HEM_Server */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -363,6 +388,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B5B864762238527B00776517 /* HEM_Server */ = {
+			isa = PBXGroup;
+			children = (
+				B5B864772238527B00776517 /* main.cpp */,
+			);
+			path = HEM_Server;
 			sourceTree = "<group>";
 		};
 		B5B8806921F516F800AA0D23 /* HEM_Client */ = {
@@ -500,6 +533,23 @@
 			productReference = B5366E4B213AF91E0040903A /* libDataLib.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		B5B864742238527B00776517 /* HEM_Server */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5B8647B2238527B00776517 /* Build configuration list for PBXNativeTarget "HEM_Server" */;
+			buildPhases = (
+				B5B864712238527B00776517 /* Sources */,
+				B5B864722238527B00776517 /* Frameworks */,
+				B5B864732238527B00776517 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HEM_Server;
+			productName = HEM_Server;
+			productReference = B5B864752238527B00776517 /* HEM_Server */;
+			productType = "com.apple.product-type.tool";
+		};
 		B5B8806721F516F800AA0D23 /* HEM_Client */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B5B8806C21F516F800AA0D23 /* Build configuration list for PBXNativeTarget "HEM_Client" */;
@@ -550,6 +600,10 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
+					B5B864742238527B00776517 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 					B5B8806721F516F800AA0D23 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -575,6 +629,7 @@
 				B5366E4A213AF91E0040903A /* DataLib */,
 				B5003D99215EBC3F007DC6C7 /* UtilsLib */,
 				B5B8806721F516F800AA0D23 /* HEM_Client */,
+				B5B864742238527B00776517 /* HEM_Server */,
 			);
 		};
 /* End PBXProject section */
@@ -626,6 +681,14 @@
 			files = (
 				B5B8806321F513A000AA0D23 /* HEM_Data.cpp in Sources */,
 				B5366E54213AFAF20040903A /* IMP_Image.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5B864712238527B00776517 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5B864782238527B00776517 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -889,6 +952,22 @@
 			};
 			name = Release;
 		};
+		B5B864792238527B00776517 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B5B8647A2238527B00776517 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		B5B8806D21F516F800AA0D23 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -967,6 +1046,15 @@
 			buildConfigurations = (
 				B5366E4D213AF91E0040903A /* Debug */,
 				B5366E4E213AF91E0040903A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5B8647B2238527B00776517 /* Build configuration list for PBXNativeTarget "HEM_Server" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5B864792238527B00776517 /* Debug */,
+				B5B8647A2238527B00776517 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
