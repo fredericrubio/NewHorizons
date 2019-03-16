@@ -99,19 +99,19 @@ bool HEM_Message::unserialize() {
     
     /// cpu
     short lCpu;
-    memcpy(&lCpu, (void *) msg, sizeof(lCpu));
+    memcpy(&lCpu, (void *) (msg + offset), sizeof(lCpu));
     offset += sizeof(lCpu);
     lData->setCPUUsage(lCpu);
     
     /// temp
     short lTemperature;
-    memcpy(&lTemperature, (void *) msg, sizeof(lTemperature));
+    memcpy(&lTemperature, (void *) (msg + offset), sizeof(lTemperature));
     offset += sizeof(lTemperature);
     lData->setTemperature(lTemperature);
     
     /// memory
     short lMemory;
-    memcpy(&lMemory, (void *) msg, sizeof(lMemory));
+    memcpy(&lMemory, (void *) (msg + offset), sizeof(lMemory));
     offset += sizeof(lMemory);
     lData->setMemoryUsage(lMemory);
     
