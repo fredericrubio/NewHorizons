@@ -20,6 +20,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Src/HEM_Client.cpp</itemPath>
       <itemPath>Src/HEM_Message.cpp</itemPath>
       <itemPath>Src/HEM_Server.cpp</itemPath>
       <itemPath>Src/IMP_Client.cpp</itemPath>
@@ -79,6 +80,8 @@
       </item>
       <item path="Inc/IMP_Server.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Src/HEM_Client.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="Src/HEM_Message.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Src/HEM_Server.cpp" ex="false" tool="1" flavor2="0">
@@ -131,6 +134,8 @@
       <item path="Inc/IMP_MessageBody.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Inc/IMP_Server.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Src/HEM_Client.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Src/HEM_Message.cpp" ex="false" tool="1" flavor2="0">
       </item>

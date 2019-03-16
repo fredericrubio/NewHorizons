@@ -40,6 +40,8 @@ int main(int argc, char** argv) {
     fprintf(stdout, "size: %u\n", sizeof(size_t));
     HEM_Message lHEMMsg(clock());
     
+    std::cout << "Server starting." << std::endl;
+    
     NHO_FILELog::ReportingLevel() = NHO_FILELog::FromString("DEBUG");
 
     HEM_Server* server = new HEM_Server(51717, 1);
